@@ -2,5 +2,9 @@
 <ul>
   <li *ngFor="let t of Tickets">
     <span>Ticket id : {{t.id}} Price : {{t.price}} Numer : {{t.number}}</span>
+    <br>
+    <input type="submit" value="Удалить" (click)="deleteTicket(t.id)" />
   </li>
 </ul>
+<input type="submit" value="БИЛЕТ" (click)="createTicket()" />
+<input type="submit" value="Update" (click)="updateTicket()" />

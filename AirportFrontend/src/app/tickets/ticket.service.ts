@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
 import { Ticket } from './ticket';
 
 @Injectable({
@@ -8,26 +8,26 @@ import { Ticket } from './ticket';
 export class TicketService {
 
   private url = "http://localhost:62444/api/ticket";
+
   constructor(private http: HttpClient){ }
     
-  getAllTickets(){
-      
-      return this.http.get(this.url);
+  getAllTickets(){     
+    return this.http.get(this.url);
   }
 
-  createTicket(user: Ticket){
-    return this.http.post(this.url, user); 
+  createTicket(ticket: Ticket){
+    return this.http.post(this.url , ticket).subscribe(x => console.log("Ok"));
   }
-  updateTicket(id: number, user: Ticket) {
-    const urlParams = new HttpParams().set("id", id.toString());
-    return this.http.put(this.url, user, { params: urlParams});
+
+  updateTicket(id: number, ticket: Ticket) {
+    return this.http.put(this.url + "/" + id, ticket).subscribe(x => console.log("Ok"));
   }
-  deleteTicket(id: number){
-    const urlParams = new HttpParams().set("id", id.toString());
-    return this.http.delete(this.url, { params: urlParams});
+
+deleteTicket(id)  {
+    return this.http.delete(this.url + "/"+ id).subscribe(x => console.log("Ok"));
   }
 
   getTicket(id : number){
-  return this.http.get("http://localhost:62444/api/ticket/1");
+    return this.http.get(this.url +"/"+id);
   }
 }

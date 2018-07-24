@@ -17,7 +17,7 @@ export class TicketDetailComponent implements OnInit {
 
   constructor(public service : TicketService,private route: ActivatedRoute){
 
-    let id = route.params._value.id;
+    let id = parseInt(route.snapshot.paramMap.get('id'));
     service.getTicket(id).subscribe((data : Ticket) => {
       this.ticket = data;
           })
