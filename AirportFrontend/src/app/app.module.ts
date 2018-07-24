@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TicketModuleModule } from './tickets/ticket-module/ticket-module.module';
+import { TicketModule } from './tickets/ticket-module/ticket.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +11,7 @@ import { TicketModuleModule } from './tickets/ticket-module/ticket-module.module
   ],
   imports: [
     BrowserModule,
-    TicketModuleModule,
+    TicketModule,
     AppRoutingModule
   ],
   providers: [],
