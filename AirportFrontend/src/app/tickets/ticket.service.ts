@@ -16,15 +16,15 @@ export class TicketService {
   }
 
   createTicket(ticket: Ticket){
-    return this.http.post(this.url , ticket).subscribe(x => console.log("Ok"));
+    return this.http.post(this.url , ticket);
   }
 
   updateTicket(id: number, ticket: Ticket) {
-    return this.http.put(this.url + "/" + id, ticket).subscribe(x => console.log("Ok"));
+    return this.http.put(this.url + "/" + id, ticket);
   }
 
 deleteTicket(id)  {
-    return this.http.delete(this.url + "/"+ id).subscribe(x => console.log("Ok"));
+    return this.http.delete(this.url + "/"+ id);
   }
 
   getTicket(id : number){

@@ -1,0 +1,12 @@
+    <div class="offset-md-2 col-md-10">
+      <h2>Aircrafts</h2>
+      <ul>
+        <li *ngFor="let t of Aircrafts">
+          <span>Ticket id : {{t.id}} Price : {{t.typeId}} Numer : {{t.name}} Timepsan : {{t.lifetime}}</span>
+          <br>
+          <input class="btn btn-submit" type="submit" value="Удалить" (click)="deleteTicket(t.id)" />
+        </li>
+      </ul>
+      <input type="submit" value="БИЛЕТ" (click)="createTicket()" />
+      <input type="submit" value="Update" (click)="updateTicket()" />
+      </div>

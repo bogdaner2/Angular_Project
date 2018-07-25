@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpParams } from '../../../../node_modules/@angular/common/http';
 import { TicketService } from '../ticket.service';
 import { Ticket } from '../ticket';
 
@@ -10,7 +9,6 @@ import { Ticket } from '../ticket';
   providers : [TicketService]
 })
 export class TicketListComponent implements OnInit {
-
 
   Tickets : Array<Ticket>;
   lastId : number;
@@ -30,20 +28,20 @@ export class TicketListComponent implements OnInit {
 
   createTicket(){
     let ticket = new Ticket(0,1000,"NUM344")
-    this.service.createTicket(ticket);
+    this.service.createTicket(ticket).subscribe();
     this.lastId += 1;
     ticket.id = this.lastId;
     this.Tickets.push(ticket);
   }
 
   deleteTicket(id : number){
-    this.service.deleteTicket(id);
+    this.service.deleteTicket(id).subscribe();
     this.Tickets = this.Tickets.filter(e => { return e.id !== id; });
   }
 
   updateTicket() {
-    let ticket = new Ticket(4,999,"TESTЕST");
-    this.service.updateTicket(4,ticket);
+    let ticket = new Ticket(4,999,"TESTЕST111");
+    this.service.updateTicket(4,ticket).subscribe();
     let ticket2 = this.Tickets.find(x => x.id == 4)
     ticket2.number = ticket.number;
     ticket2.price = ticket.price;
