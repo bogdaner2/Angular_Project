@@ -9,16 +9,20 @@ import { StewardessModule } from './stewardesses/stewardess-module/stewardess.mo
 import { PilotModule } from './pilots/pilot-module/pilot.module';
 import { AircraftTypeModule } from './aircraft-types/aircraft-type-module/aircraft-type.module';
 import { CrewModule } from './crew/crew-module/crew.module';
+import { FlightModule } from './flights/flight-module/flight.module';
+import { DepartureModule } from './departures/departure-module/departure.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     TicketModule,
     AircraftModule,
     StewardessModule,
+    FlightModule,
+    DepartureModule,
     PilotModule,
     CrewModule,
     AircraftTypeModule,

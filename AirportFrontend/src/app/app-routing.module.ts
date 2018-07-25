@@ -12,6 +12,10 @@ import { AircraftTypeListComponent } from './aircraft-types/aircraft-type-list/a
 import { AircraftTypeDetailComponent } from './aircraft-types/aircraft-type-detail/aircraft-type-detail.component';
 import { CrewDetailComponent } from './crew/crew-detail/crew-detail.component';
 import { CrewListComponent } from './crew/crew-list/crew-list.component';
+import { FlightListComponent } from './flights/flight-list/flight-list.component';
+import { FlightDetailComponent } from './flights/flight-detail/flight-detail.component';
+import { DepartureListComponent } from './departures/departure-list/departure-list.component';
+import { DepartureDetailComponent } from './departures/departure-detail/departure-detail.component';
 
 const routes: Routes = [
   {
@@ -53,6 +57,18 @@ const routes: Routes = [
     },{
       path : 'crews/:id',
       component : CrewDetailComponent
+    },{
+      path : 'flights',
+      component : FlightListComponent
+    },{
+      path : 'flights/:id',
+      component : FlightDetailComponent
+    },{
+      path : 'departures',
+      component : DepartureListComponent
+    },{
+      path : 'departures/:id',
+      component : DepartureDetailComponent
     }
   ];
 

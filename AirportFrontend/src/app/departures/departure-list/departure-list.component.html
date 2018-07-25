@@ -1,0 +1,15 @@
+<div class="offset-md-2 col-md-10">
+  <h2>Departures</h2>
+  <div class="row">
+  <div class="card" style="width: 18rem;margin-top:20px;" *ngFor="let t of Departures">
+    <div class="card-body">
+      <h5 class="card-title">Point of Depature : {{t.departureTime}}</h5>
+      <h5 class="card-title">Point of Depature : {{t.number}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Destination : {{t.crewId}}</h6>
+      <h6 class="card-subtitle mb-2 text-muted">Destination : {{t.aircraftId}}</h6>
+      <input type="submit" class="btn-error btn" value="Delete" (click)="deleteDeparture(t.id)" />
+      <p class="card-text"><input type="submit" value="БИЛЕТ" (click)="createDeparture()" />
+        <input type="submit" value="Update" (click)="updateDeparture()" /></p>
+    </div>
+  </div>
+  </div>

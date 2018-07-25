@@ -1,6 +1,6 @@
-export class Departures{
+export class Departure{
     constructor(public id : number,
-        public Number : string,
+        public number : string,
         public departureTime : string,
         public crewId : number,
         public aircraftId : number){ }
