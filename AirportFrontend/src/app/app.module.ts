@@ -8,6 +8,7 @@ import { AircraftModule } from './aircrafts/aircraft-module/aircraft.module';
 import { StewardessModule } from './stewardesses/stewardess-module/stewardess.module';
 import { PilotModule } from './pilots/pilot-module/pilot.module';
 import { AircraftTypeModule } from './aircraft-types/aircraft-type-module/aircraft-type.module';
+import { CrewModule } from './crew/crew-module/crew.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AircraftTypeModule } from './aircraft-types/aircraft-type-module/aircra
     AircraftModule,
     StewardessModule,
     PilotModule,
+    CrewModule,
     AircraftTypeModule,
     AppRoutingModule,
     HttpClientModule

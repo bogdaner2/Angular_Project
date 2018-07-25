@@ -10,6 +10,8 @@ import { PilotListComponent } from './pilots/pilot-list/pilot-list.component';
 import { PilotDetailComponent } from './pilots/pilot-detail/pilot-detail.component';
 import { AircraftTypeListComponent } from './aircraft-types/aircraft-type-list/aircraft-type-list.component';
 import { AircraftTypeDetailComponent } from './aircraft-types/aircraft-type-detail/aircraft-type-detail.component';
+import { CrewDetailComponent } from './crew/crew-detail/crew-detail.component';
+import { CrewListComponent } from './crew/crew-list/crew-list.component';
 
 const routes: Routes = [
   {
@@ -45,9 +47,13 @@ const routes: Routes = [
     },{
       path : 'aircrafttypes/:id',
       component : AircraftTypeDetailComponent
+    },{
+      path : 'crews',
+      component : CrewListComponent
+    },{
+      path : 'crews/:id',
+      component : CrewDetailComponent
     }
-
-
   ];
 
 @NgModule({
