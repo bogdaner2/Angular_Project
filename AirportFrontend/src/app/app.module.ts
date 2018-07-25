@@ -6,7 +6,8 @@ import { TicketModule } from './tickets/ticket-module/ticket.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AircraftModule } from './aircrafts/aircraft-module/aircraft.module';
 import { StewardessModule } from './stewardesses/stewardess-module/stewardess.module';
-import { PilotModule } from './pilots/pilot/pilot.module';
+import { PilotModule } from './pilots/pilot-module/pilot.module';
+import { AircraftTypeModule } from './aircraft-types/aircraft-type-module/aircraft-type.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { PilotModule } from './pilots/pilot/pilot.module';
     AircraftModule,
     StewardessModule,
     PilotModule,
+    AircraftTypeModule,
     AppRoutingModule,
     HttpClientModule
   ],

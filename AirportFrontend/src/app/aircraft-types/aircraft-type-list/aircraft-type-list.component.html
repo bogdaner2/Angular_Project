@@ -1,0 +1,12 @@
+<div class="offset-md-1 col-md-10">
+  <h2>types</h2>
+  <ul>
+    <li *ngFor="let t of AircraftTypes">
+      <span>Ticket id : {{t.id}} Price : {{t.model}} Numer : {{t.carryingCapasity}}  {{t.countOfSeats}}</span>
+      <br>
+      <input class="btn btn-submit" type="submit" value="Удалить" (click)="deleteAircraftType(t.id)" />
+    </li>
+  </ul>
+  <input type="submit" value="БИЛЕТ" (click)="createAircraftType()" />
+  <input type="submit" value="Update" (click)="updateAircraftType()" />
+  </div>

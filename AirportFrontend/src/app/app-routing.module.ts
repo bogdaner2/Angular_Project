@@ -8,6 +8,8 @@ import { StewardessListComponent } from './stewardesses/stewardess-list/stewarde
 import { StewardessDetailComponent } from './stewardesses/stewardess-detail/stewardess-detail.component';
 import { PilotListComponent } from './pilots/pilot-list/pilot-list.component';
 import { PilotDetailComponent } from './pilots/pilot-detail/pilot-detail.component';
+import { AircraftTypeListComponent } from './aircraft-types/aircraft-type-list/aircraft-type-list.component';
+import { AircraftTypeDetailComponent } from './aircraft-types/aircraft-type-detail/aircraft-type-detail.component';
 
 const routes: Routes = [
   {
@@ -37,6 +39,12 @@ const routes: Routes = [
     },{
       path : 'pilots/:id',
       component : PilotDetailComponent
+    },{
+      path : 'aircrafttypes',
+      component : AircraftTypeListComponent
+    },{
+      path : 'aircrafttypes/:id',
+      component : AircraftTypeDetailComponent
     }
 
 
