@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { TicketModule } from './tickets/ticket-module/ticket.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AircraftModule } from './aircrafts/aircraft-module/aircraft.module';
+import { StewardessModule } from './stewardesses/stewardess-module/stewardess.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { AircraftModule } from './aircrafts/aircraft-module/aircraft.module';
     BrowserModule,
     TicketModule,
     AircraftModule,
+    StewardessModule,
     AppRoutingModule,
     HttpClientModule
   ],
