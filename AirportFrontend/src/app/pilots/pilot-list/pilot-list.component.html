@@ -1,3 +1,12 @@
-<p>
-  pilot-list works!
-</p>
+<div class="offset-md-2 col-md-10">
+  <h2>Pilots</h2>
+  <ul>
+    <li *ngFor="let t of Pilots">
+      <span>Ticket id : {{t.id}} Price : {{t.firstName}} Numer : {{t.lastName}} :date  {{t.dateOfBirth}} experience {{t.experience}}</span>
+      <br>
+      <input class="btn btn-submit" type="submit" value="Удалить" (click)="deletePilot(t.id)" />
+    </li>
+  </ul>
+  <input type="submit" value="БИЛЕТ" (click)="createPilot()" />
+  <input type="submit" value="Update" (click)="updatePilot()" />
+  </div>
