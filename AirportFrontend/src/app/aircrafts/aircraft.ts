@@ -1,8 +1,8 @@
 export class Aircraft{
     constructor(
-        id : number,
-        name : string,
-        typeId : number,
-        releseDate : string,
-        lifetime : string ){ }
+        public id : number,
+        public name : string,
+        public typeId : number,
+        public releseDate : string,
+        public lifetime : string ){ }
 }

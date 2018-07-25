@@ -15,12 +15,12 @@ export class AircraftService {
     return this.http.get(this.url);
   }
 
-  createAircraft(Aircraft: Aircraft){
-    return this.http.post(this.url , Aircraft);
+  createAircraft(aircraft: Aircraft){
+    return this.http.post(this.url , aircraft);
   }
 
-  updateAircraft(id: number, Aircraft: Aircraft) {
-    return this.http.put(this.url + "/" + id, Aircraft);
+  updateAircraft(id: number, aircraft: Aircraft) {
+    return this.http.put(this.url + "/" + id, aircraft);
   }
 
   deleteAircraft(id)  {

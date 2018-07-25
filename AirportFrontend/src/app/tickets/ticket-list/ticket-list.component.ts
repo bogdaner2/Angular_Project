@@ -42,9 +42,9 @@ export class TicketListComponent implements OnInit {
   updateTicket() {
     let ticket = new Ticket(4,999,"TESTЕST111");
     this.service.updateTicket(4,ticket).subscribe();
-    let ticket2 = this.Tickets.find(x => x.id == 4)
-    ticket2.number = ticket.number;
-    ticket2.price = ticket.price;
+    let temp = this.Tickets.find(x => x.id == 4)
+    temp.number = ticket.number;
+    temp.price = ticket.price;
   }
 
 }

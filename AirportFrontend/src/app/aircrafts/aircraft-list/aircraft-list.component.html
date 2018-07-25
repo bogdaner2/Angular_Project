@@ -2,11 +2,11 @@
       <h2>Aircrafts</h2>
       <ul>
         <li *ngFor="let t of Aircrafts">
-          <span>Ticket id : {{t.id}} Price : {{t.typeId}} Numer : {{t.name}} Timepsan : {{t.lifetime}}</span>
+          <span>Ticket id : {{t.id}} Price : {{t.typeId}} Numer : {{t.name}} Release : {{t.releseDate}} Timepsan - Years :{{t.lifetime}}</span>
           <br>
-          <input class="btn btn-submit" type="submit" value="Удалить" (click)="deleteTicket(t.id)" />
+          <input class="btn btn-submit" type="submit" value="Удалить" (click)="deleteAircraft(t.id)" />
         </li>
       </ul>
-      <input type="submit" value="БИЛЕТ" (click)="createTicket()" />
-      <input type="submit" value="Update" (click)="updateTicket()" />
+      <input type="submit" value="БИЛЕТ" (click)="createAircraft()" />
+      <input type="submit" value="Update" (click)="updateAircraft()" />
       </div>
