@@ -1,6 +1,6 @@
 export class Ticket{
     constructor(
-        public id: string,
-        public price: string,
+        public id: number,
+        public price: number,
         public number: string) { }
 }
