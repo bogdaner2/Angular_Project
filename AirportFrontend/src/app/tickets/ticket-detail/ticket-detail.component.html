@@ -1,3 +1,45 @@
-<h2>Ticket</h2>
-<br>
-<span >Ticket id : {{ticket?.id}} Price : {{ticket?.price}} Numer : {{ticket?.number}}</span>
+<div class="row justify-content-center">
+    <h1>Ticket Info</h1>
+</div>
+<div class="card mx-auto card-width">
+    <div class="card-heading p-2"><h4>Ticket id : {{ticket?.id}}</h4></div>
+    <hr>
+    <div class="card-heading p-2">
+        Price: <input class="form-control" 
+        value="{{ticket?.price}}" 
+        [disabled]="!isUpdate"
+        placeholder="{{ticket?.price}}"
+        name="price" 
+        [(ngModel)]="price" 
+        maxlength="4" 
+        pattern="[1-9]{1}[0-9]+"
+        required 
+        #inputPrice="ngModel"/>
+    </div>
+    <div *ngIf="inputPrice.invalid && (inputPrice.dirty || inputPrice.touched)" class="alert alert-danger card-heading m-2">
+        <div>
+            Price have to be between 10 and 9999$!
+        </div>
+    </div>
+    <div class="card-heading p-2">
+        Number: <input class="form-control" 
+        name="number" value="{{ticket?.number}}" 
+        [disabled]="!isUpdate" 
+        placeholder="{{ticket?.number}}" 
+        [(ngModel)]="number" 
+        minlength="4" 
+        required 
+        #inputNumber="ngModel"/> 
+    </div>
+    <div *ngIf="inputNumber.invalid && (inputNumber.dirty || inputNumber.touched)" class="alert alert-danger card-heading m-2">
+        <div>
+            Length have to be more than 4!
+        </div>
+    </div>
+    <div class="card-heading p-2" [hidden]="!isUpdate">
+        Input data to update and press "Update"
+    </div>
+    <div class="card-heading p-2 mx-auto">
+        <button type="button" class="btn btn-outline-secondary" (click)="updateTicket(number,price)">Update</button>
+    </div>
+</div>

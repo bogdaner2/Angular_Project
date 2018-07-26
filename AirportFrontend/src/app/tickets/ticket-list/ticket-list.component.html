@@ -13,7 +13,7 @@
     <div class="card-subtitle mb-2 text-muted">Price : {{t.price}}</div>
     <div class="card-subtitle mb-2 text-muted">Number : {{t.number}}</div>
     <div class="justify-content-center">
-    <button type="button" class="btn btn-success "  (click)="updateTicket()" >Update</button>
+    <button type="button" class="btn btn-success " [routerLink]="['/tickets', t.id]" >Update</button>
     <button type="button" class="btn btn-danger ml-1" (click)="deleteTicket(t.id)">Delete</button>
     </div>
 </div>
@@ -39,11 +39,11 @@
             </div>
             <div class="form-group">
                 <label>Input price</label>
-                <input type="number" class="form-control" name="price" [(ngModel)]="price" max="4000" min="1" required #inputPrice="ngModel"/>
+                <input  class="form-control" name="price" [(ngModel)]="price" required maxlength="4" pattern="[1-9]{1}[0-9]+" #inputPrice="ngModel"/>
             </div>
             <div *ngIf="inputPrice.invalid && (inputPrice.dirty || inputPrice.touched)" class="alert alert-danger">
                 <div>
-                    Price is required
+                    Price have to be between 10 and 9999$!
                 </div>
              </div>
         </div>

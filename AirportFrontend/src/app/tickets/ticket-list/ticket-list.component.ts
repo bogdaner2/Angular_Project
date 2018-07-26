@@ -26,25 +26,17 @@ export class TicketListComponent implements OnInit {
     })
   }
 
+  deleteTicket(id : number){
+    this.service.deleteTicket(id).subscribe();
+    this.Tickets = this.Tickets.filter(e => { return e.id !== id; });
+  }
+
   createTicket(number : string,price : number){
     let ticket = new Ticket(0,price,number);
     this.service.createTicket(ticket).subscribe();
     this.lastId++;
     ticket.id = this.lastId;
     this.Tickets.push(ticket);
-  }
-
-  deleteTicket(id : number){
-    this.service.deleteTicket(id).subscribe();
-    this.Tickets = this.Tickets.filter(e => { return e.id !== id; });
-  }
-
-  updateTicket() {
-    let ticket = new Ticket(4,999,"TESTЕST111");
-    this.service.updateTicket(4,ticket).subscribe();
-    let temp = this.Tickets.find(x => x.id == 4)
-    temp.number = ticket.number;
-    temp.price = ticket.price;
   }
 
 }
