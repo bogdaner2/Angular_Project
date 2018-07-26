@@ -28,7 +28,7 @@ export class PilotListComponent implements OnInit {
   createPilot(){
     let pilot = new Pilot(1,"Luska","Petrova","10.06.2018",5);
     this.service.createPilot(pilot).subscribe();
-    this.lastId += 1;
+    this.lastId++;
     pilot.id = this.lastId;
     this.Pilots.push(pilot);
   }

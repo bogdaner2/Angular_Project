@@ -28,7 +28,7 @@ export class StewardessListComponent implements OnInit {
   createStewardess(){
     let stewardess = new Stewardess(1,"Luska","Petrova","10.06.2018");
     this.service.createStewardess(stewardess).subscribe();
-    this.lastId += 1;
+    this.lastId++;
     stewardess.id = this.lastId;
     this.Stewardesses.push(stewardess);
   }

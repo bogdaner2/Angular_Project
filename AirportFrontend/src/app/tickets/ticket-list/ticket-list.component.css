@@ -1,0 +1,11 @@
+.card-header-color{
+    background-color: rgb(77, 0, 77);
+}
+.btn-info{
+    background-color:transparent;
+    border: none;
+    color:white;
+}
+.card-width{
+   min-width: 20%;
+}

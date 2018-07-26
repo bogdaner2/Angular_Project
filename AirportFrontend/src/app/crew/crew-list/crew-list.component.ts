@@ -27,7 +27,7 @@ export class CrewListComponent implements OnInit {
   createCrew(){
     let crew = new Crew(0,1,[1,2])
     this.service.createCrew(crew).subscribe();
-    this.lastId += 1;
+    this.lastId++;
     crew.id = this.lastId;
     this.Crews.push(crew);
   }

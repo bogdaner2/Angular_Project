@@ -1,13 +1,56 @@
-<div class="offset-md-2 col-md-10">
-<h2>Tickets</h2>
-<div class="row">
-<div class="card" style="width: 18rem;margin-top:20px;" *ngFor="let t of Tickets">
-  <div class="card-body">
-    <h5 class="card-title">Price : {{t.price}}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Numer : {{t.number}}</h6>
-    <input type="submit" class="btn-error btn" value="Delete" (click)="deleteTicket(t.id)" />
-    <p class="card-text"><input type="submit" value="БИЛЕТ" (click)="createTicket()" />
-      <input type="submit" value="Update" (click)="updateTicket()" /></p>
+ <div class="row justify-content-center">
+    <div > <h1>Tickets</h1></div> 
+ </div>
+ <div class="row justify-content-center mb-2">
+    <div ><button type="button"  class="btn btn-warning btn-lg"  data-toggle="modal" data-target="#modalCreate" >Create</button></div>
+ </div> 
+<div class="row justify-content-center ">
+<div class="card m-1 card-width" *ngFor="let t of Tickets">
+  <div class="card-header card-header-color text-white ">Ticket Id : {{t.id}}
+    <a class="btn-info float-right"  [routerLink]="['/tickets', t.id]"><i class="fas fa-question"></i></a>
   </div>
+  <div class="card-body">
+    <div class="card-subtitle mb-2 text-muted">Price : {{t.price}}</div>
+    <div class="card-subtitle mb-2 text-muted">Number : {{t.number}}</div>
+    <div class="justify-content-center">
+    <button type="button" class="btn btn-success "  (click)="updateTicket()" >Update</button>
+    <button type="button" class="btn btn-danger ml-1" (click)="deleteTicket(t.id)">Delete</button>
+    </div>
 </div>
 </div>
+<div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Create new object</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Input ticket number</label>
+                <input class="form-control" name="title" [(ngModel)]="number" minlength="4" required #inputNumber="ngModel"/>
+            </div>
+            <div *ngIf="inputNumber.invalid && (inputNumber.dirty || inputNumber.touched)" class="alert alert-danger">
+               <div>
+                   Length have to be more than 4!
+               </div>
+            </div>
+            <div class="form-group">
+                <label>Input price</label>
+                <input type="number" class="form-control" name="price" [(ngModel)]="price" max="4000" min="1" required #inputPrice="ngModel"/>
+            </div>
+            <div *ngIf="inputPrice.invalid && (inputPrice.dirty || inputPrice.touched)" class="alert alert-danger">
+                <div>
+                    1 < Price < 4000
+                </div>
+             </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" [disabled]="inputNumber.invalid"  class="btn btn-success" data-dismiss="modal" (click)="createTicket(number, price)">Yes</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+  </div>

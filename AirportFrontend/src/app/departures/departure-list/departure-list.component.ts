@@ -28,7 +28,7 @@ export class DepartureListComponent implements OnInit {
   createDeparture(){
     let departure = new Departure(0,"AAA111","06-04-2017",1,1);
     this.service.createDeparture(departure).subscribe();
-    this.lastId += 1;
+    this.lastId++;
     departure.id = this.lastId;
     this.Departures.push(departure);
   }

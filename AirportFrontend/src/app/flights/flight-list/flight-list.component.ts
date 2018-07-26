@@ -27,7 +27,7 @@ export class FlightListComponent implements OnInit {
   createFlight(){
     let flight = new Flight(0,"AAA111","Rome","05-06-2017","London","06-06-2017",[1,3,4]);
     this.service.createFlight(flight).subscribe();
-    this.lastId += 1;
+    this.lastId++;
     flight.id = this.lastId;
     this.Flights.push(flight);
   }

@@ -26,10 +26,10 @@ export class TicketListComponent implements OnInit {
     })
   }
 
-  createTicket(){
-    let ticket = new Ticket(0,1000,"NUM344")
+  createTicket(number : string,price : number){
+    let ticket = new Ticket(0,price,number);
     this.service.createTicket(ticket).subscribe();
-    this.lastId += 1;
+    this.lastId++;
     ticket.id = this.lastId;
     this.Tickets.push(ticket);
   }

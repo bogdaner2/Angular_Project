@@ -30,7 +30,7 @@ export class AircraftListComponent implements OnInit {
     let timeSpan  = "20:00:00";
     let aircraft = new Aircraft(0,"ARM273",3,"12.06.2000",timeSpan)
     this.service.createAircraft(aircraft).subscribe(x => console.log(x));
-    this.lastId += 1;
+    this.lastId++;
     aircraft.id = this.lastId;
     aircraft.lifetime = timeSpan.slice(0,2);
     this.Aircrafts.push(aircraft); 

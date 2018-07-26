@@ -28,7 +28,7 @@ export class AircraftTypeListComponent implements OnInit {
   createAircraftType(){
     let aircraftType = new AircraftType(0,"TRD444",10,7000);
     this.service.createAircraftType(aircraftType).subscribe();
-    this.lastId += 1;
+    this.lastId++;
     aircraftType.id = this.lastId;
     this.AircraftTypes.push(aircraftType);
   }
