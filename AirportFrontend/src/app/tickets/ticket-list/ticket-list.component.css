@@ -9,3 +9,10 @@
 .card-width{
    min-width: 20%;
 }
+
+@media (max-width: 767.98px) {  
+    .card-width{
+        min-width: 75%;
+    }
+}
+
