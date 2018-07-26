@@ -13,7 +13,7 @@ export class TicketListComponent implements OnInit {
   Tickets : Array<Ticket>;
   lastId : number;
 
-  constructor(public service : TicketService){ }
+  constructor(private service : TicketService){ }
 
    ngOnInit(){
     this.getTickets();
