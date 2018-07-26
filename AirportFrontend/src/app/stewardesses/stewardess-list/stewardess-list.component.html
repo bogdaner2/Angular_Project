@@ -1,12 +1,66 @@
-<div class="offset-md-2 col-md-10">
-  <h2>Stewardesses</h2>
-  <ul>
-    <li *ngFor="let t of Stewardesses">
-      <span>Ticket id : {{t.id}} Price : {{t.firstName}} Numer : {{t.lastName}} :date  {{t.dateOfBirth}}</span>
-      <br>
-      <input class="btn btn-submit" type="submit" value="Удалить" (click)="deleteStewardess(t.id)" />
-    </li>
-  </ul>
-  <input type="submit" value="БИЛЕТ" (click)="createStewardess()" />
-  <input type="submit" value="Update" (click)="updateStewardess()" />
+<div class="row justify-content-center">
+    <div > <h1>Stewardesses</h1></div> 
+ </div>
+ <div class="row justify-content-center mb-2">
+    <div ><button type="button"  class="btn btn-warning btn-lg"  data-toggle="modal" data-target="#modalCreate" >Create</button></div>
+ </div> 
+<div class="row justify-content-center ">
+<div class="card m-2 card-width" *ngFor="let s of Stewardesses">
+  <div class="card-header card-header-color text-white ">Stewardess Id : {{s.id}}
+    <a class="btn-info float-right"  [routerLink]="['/stewardesses', s.id]"><i class="fas fa-question"></i></a>
+  </div>
+  <div class="card-body">
+    <div class="card-subtitle mb-2 text-muted">First Name : {{s.firstName}}</div>
+    <div class="card-subtitle mb-2 text-muted">Last Name : {{s.lastName}}</div>
+    <div class="card-subtitle mb-2 text-muted">Date of birth : {{s.dateOfBirth}}</div>
+    <div class="justify-content-center">
+    <button type="button" class="btn btn-success " [routerLink]="['/stewardesses', s.id]" >Update</button>
+    <button type="button" class="btn btn-danger ml-1" (click)="deleteStewardess(s.id)">Delete</button>
+    </div>
+</div>
+</div>
+<div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Create new object</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Input stewardess first name <span class="required-sign">*</span></label>
+                <input class="form-control" name="firstName" [(ngModel)]="firstN" minlength="4" required #inputFirstN="ngModel"/>
+            </div>
+            <div *ngIf="inputFirstN.invalid && (inputFirstN.dirty || inputFirstN.touched)" class="alert alert-danger">
+               <div>
+                   Length have to be more than 4!
+               </div>
+            </div>
+            <div class="form-group">
+                <label>Input stewardess last name <span class="required-sign">*</span></label>
+                <input class="form-control" name="lastName" [(ngModel)]="lastN" minlength="4" required #inputLastN="ngModel"/>
+            </div>
+            <div *ngIf="inputLastN.invalid && (inputLastN.dirty || inputLastN.touched)" class="alert alert-danger">
+               <div>
+                   Length have to be more than 4!
+               </div>
+            </div>
+            <div class="form-group">
+                <label>Input birth date <span class="required-sign">*</span></label>
+                <input  class="form-control" name="birth" [(ngModel)]="birth" required pattern="^([0-2][0-9]|(3)[0-1])(.)(((0)[0-9])|((1)[0-2]))(.)\d{4}$" #inputBirth="ngModel"/>
+            </div>
+            <div *ngIf="inputBirth.invalid && (inputBirth.dirty || inputBirth.touched)" class="alert alert-danger">
+                <div>
+                    Date formt dd.mm.yyyy!
+                </div>
+             </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" [disabled]=" inputFirstN.invalid || inputBirth.invalid"  class="btn btn-success" data-dismiss="modal" (click)="createStewardess(firstN,lastN,birth)">Yes</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
   </div>

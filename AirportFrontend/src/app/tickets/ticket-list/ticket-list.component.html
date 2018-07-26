@@ -5,7 +5,7 @@
     <div ><button type="button"  class="btn btn-warning btn-lg"  data-toggle="modal" data-target="#modalCreate" >Create</button></div>
  </div> 
 <div class="row justify-content-center ">
-<div class="card m-1 card-width" *ngFor="let t of Tickets">
+<div class="card m-2 card-width" *ngFor="let t of Tickets">
   <div class="card-header card-header-color text-white ">Ticket Id : {{t.id}}
     <a class="btn-info float-right"  [routerLink]="['/tickets', t.id]"><i class="fas fa-question"></i></a>
   </div>
@@ -29,7 +29,7 @@
         </div>
         <div class="modal-body">
             <div class="form-group">
-                <label>Input ticket number</label>
+                <label>Input ticket number <span class="required-sign">*</span></label>
                 <input class="form-control" name="title" [(ngModel)]="number" minlength="4" required #inputNumber="ngModel"/>
             </div>
             <div *ngIf="inputNumber.invalid && (inputNumber.dirty || inputNumber.touched)" class="alert alert-danger">
@@ -38,7 +38,7 @@
                </div>
             </div>
             <div class="form-group">
-                <label>Input price</label>
+                <label>Input price <span class="required-sign">*</span></label>
                 <input  class="form-control" name="price" [(ngModel)]="price" required maxlength="4" pattern="[1-9]{1}[0-9]+" #inputPrice="ngModel"/>
             </div>
             <div *ngIf="inputPrice.invalid && (inputPrice.dirty || inputPrice.touched)" class="alert alert-danger">

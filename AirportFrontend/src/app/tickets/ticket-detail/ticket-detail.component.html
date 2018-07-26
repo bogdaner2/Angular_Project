@@ -5,7 +5,8 @@
     <div class="card-heading p-2"><h4>Ticket id : {{ticket?.id}}</h4></div>
     <hr>
     <div class="card-heading p-2">
-        Price: <input class="form-control" 
+        Price: <span class="required-sign">*</span>
+        <input class="form-control" 
         value="{{ticket?.price}}" 
         [disabled]="!isUpdate"
         placeholder="{{ticket?.price}}"
@@ -22,7 +23,8 @@
         </div>
     </div>
     <div class="card-heading p-2">
-        Number: <input class="form-control" 
+        Number: <span class="required-sign">*</span>
+        <input class="form-control" 
         name="number" value="{{ticket?.number}}" 
         [disabled]="!isUpdate" 
         placeholder="{{ticket?.number}}" 

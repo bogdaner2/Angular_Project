@@ -1,3 +1,59 @@
-<p>
-  stewardess-detail works!
-</p>
+<div class="row justify-content-center">
+    <h1>Stewardess Info</h1>
+</div>
+<div class="card mx-auto card-width">
+    <div class="card-heading p-2"><h4>Stewardess id : {{stewardess?.id}}</h4></div>
+    <hr>
+    <div class="card-heading p-2">
+        First Name: <input class="form-control" 
+        value="{{stewardess?.firstName}}" 
+        [disabled]="!isUpdate"
+        placeholder="{{stewardess?.firstName}}"
+        name="firstName" 
+        [(ngModel)]="firstName" 
+        minlength="4" 
+        required 
+        #inputFirstN="ngModel"/>
+    </div>
+    <div *ngIf="inputFirstN.invalid && (inputFirstN.dirty || inputFirstN.touched)" class="alert alert-danger card-heading m-2">
+        <div>
+            Length have to be more than 4!
+        </div>
+    </div>
+    <div class="card-heading p-2">
+        Last Name: <input class="form-control" 
+        name="lastName" value="{{stewardess?.lastName}}" 
+        [disabled]="!isUpdate" 
+        placeholder="{{stewardess?.lastName}}" 
+        [(ngModel)]="lastName" 
+        minlength="4" 
+        required 
+        #inputlastN="ngModel"/> 
+    </div>
+    <div *ngIf="inputlastN.invalid && (inputlastN.dirty || inputlastN.touched)" class="alert alert-danger card-heading m-2">
+        <div>
+            Length have to be more than 4!
+        </div>
+    </div>
+    <div class="card-heading p-2">
+        Date of birth: <input class="form-control" 
+        name="bith" value="{{stewardess?.dateOfBirth}}" 
+        [disabled]="!isUpdate" 
+        placeholder="{{stewardess?.dateOfBirth}}" 
+        [(ngModel)]="birth" 
+        pattern="^([0-2][0-9]|(3)[0-1])(.)(((0)[0-9])|((1)[0-2]))(.)\d{4}$"
+        required 
+        #inputBirth="ngModel"/> 
+    </div>
+    <div *ngIf="inputBirth.invalid && (inputBirth.dirty || inputBirth.touched)" class="alert alert-danger card-heading m-2">
+        <div>
+            Date formt dd.mm.yyyy!
+        </div>
+    </div>
+    <div class="card-heading p-2" [hidden]="!isUpdate">
+        Input data to update and press "Update"
+    </div>
+    <div class="card-heading p-2 mx-auto">
+        <button type="button" class="btn btn-outline-secondary" (click)="updateStewardess(firstName,lastName,birth)">Update</button>
+    </div>
+</div>

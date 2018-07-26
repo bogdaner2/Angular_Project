@@ -25,8 +25,8 @@ export class StewardessListComponent implements OnInit {
     })
   }
 
-  createStewardess(){
-    let stewardess = new Stewardess(1,"Luska","Petrova","10.06.2018");
+  createStewardess(firstName : string, lastName : string,dateOfBirth:string){
+    let stewardess = new Stewardess(1,firstName,lastName,dateOfBirth);
     this.service.createStewardess(stewardess).subscribe();
     this.lastId++;
     stewardess.id = this.lastId;
