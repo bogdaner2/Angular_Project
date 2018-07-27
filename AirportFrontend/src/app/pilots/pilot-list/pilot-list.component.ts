@@ -19,7 +19,7 @@ export class PilotListComponent implements OnInit {
   }
 
   getPilots(){
-    this.service.getAllPilotes().subscribe((data : Array<Pilot>) => {
+    this.service.getAllPilots().subscribe((data : Array<Pilot>) => {
     this.Pilots = data;
     this.lastId = this.Pilots[this.Pilots.length - 1].id;
     })

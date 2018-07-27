@@ -11,5 +11,4 @@ export class CrewDetailComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

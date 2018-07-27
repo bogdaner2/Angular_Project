@@ -5,26 +5,26 @@
     <div class="card-heading p-2"><h4>Aircraft id : {{Aircraft?.id}}</h4></div>
     <hr>
     <div class="card-heading p-2">
-        Number: "{{Aircraft?.number}}" <br>
-        <input class="form-control" 
+        Name: {{Aircraft?.name}} <br>
+        <input class="form-control"
+        [(ngModel)]="name"
+        maxlength="6" 
+        pattern="[A-Z]{3}[0-9]{3}"
         [disabled]="!isUpdate"
-        placeholder="{{Aircraft?.number}}"
-        [(ngModel)]="number" 
-        minlength="6"
-        maxlength="50" 
+        placeholder="{{Aircraft?.name}}" 
         required 
-        #inputNumber="ngModel"/>
+        #nameIn="ngModel"/>
     </div>
-    <div [hidden]="!isUpdate" *ngIf="inputNumber.invalid && (inputNumber.dirty || inputNumber.untouched)" class="alert alert-danger card-heading m-2">
+    <div [hidden]="!isUpdate" *ngIf="nameIn.invalid && (nameIn.dirty || nameIn.untouched)" class="alert alert-danger card-heading m-2">
         <div>
-            Length have to be more than 6 and less than 50!
+            Length have to be less than 6 and match pattern LLLNNN (L-letter in uppercase,N-number)
         </div>
     </div>
     <div class="card-heading p-2">
-        Aircraft time: {{Aircraft?.AircraftTime}} <br>
+        Release date: {{Aircraft?.releseDate}} <br>
         <input class="form-control" 
         [disabled]="!isUpdate" 
-        placeholder="{{Aircraft?.AircraftTime}}" 
+        placeholder="{{Aircraft?.releseDate}}" 
         [(ngModel)]="time" 
         maxlength="10"
         pattern="^([0-2][0-9]|(3)[0-1])(.)(((0)[0-9])|((1)[0-2]))(.)\d{4}$" 
@@ -37,35 +37,38 @@
         </div>
     </div>
     <div class="card-heading p-2">
-        Crew №: {{Aircraft?.crewId}} <br> 
-        <select [disabled]="!isUpdate"  class="form-control" (ngModelChange) = "ChangeCrew($event)" name="crew" [(ngModel)]="crew" required  #crewIn="ngModel" >
-                <option  *ngFor="let c of crews" [ngValue]="c" >
-                 Id : {{c.id}} Stewardesses on the board : {{c.stewardessesId.length}}
-                </option>
-            </select>
+        Lifetime: {{Aircraft?.lifetime}} years<br>
+        <input class="form-control" 
+        [disabled]="!isUpdate" 
+        placeholder="{{Aircraft?.lifetime}}" 
+        [(ngModel)]="life" 
+        maxlength="2" 
+        pattern="\b([1-9]|1[0-9]|20)\b" 
+        #inputLife="ngModel"
+        required /> 
     </div>
-    <div [hidden]="!isUpdate" *ngIf="crewIn.invalid && (crewIn.dirty || crewIn.untouched)" class="alert alert-danger card-heading m-2">
-            <div>
-                Length have to be more than 4!
-            </div>
+    <div [hidden]="!isUpdate" *ngIf="inputLife.invalid && (inputLife.dirty || inputLife.untouched)" class="alert alert-danger card-heading m-2">
+        <div>
+            Lifetime have to be between 1 and 20!
         </div>
+    </div>
     <div class="card-heading p-2">
-        Aircraft id: {{Aircraft?.aircraftId}} <br> 
-        <select  [disabled]="!isUpdate" class="form-control" (ngModelChange) = "ChangeAircraft($event)" name="aircraft" [(ngModel)]="aircraft"  required #airIn="ngModel"  >
-                <option  *ngFor="let a of aircrafts" [ngValue]="a" >
-                 Id : {{a.id}} Name : {{a.name}}
+        type №: {{Aircraft?.typeId}} <br> 
+        <select [disabled]="!isUpdate"  class="form-control" (ngModelChange) = "ChangeType($event)" name="type" [(ngModel)]="type" required  #typeIn="ngModel" >
+                <option  *ngFor="let t of Types" [ngValue]="t" >
+                 Id : {{t.id}} model : {{t.model}}
                 </option>
             </select>
     </div>
-    <div [hidden]="!isUpdate" *ngIf="airIn.invalid && (airIn.dirty || airIn.untouched)" class="alert alert-danger card-heading m-2">
+    <div [hidden]="!isUpdate" *ngIf="typeIn.invalid && (typeIn.dirty || typeIn.untouched)" class="alert alert-danger card-heading m-2">
             <div>
-                Length have to be more than 4!
+                Please,select option
             </div>
         </div>
     <div class="card-heading p-2" [hidden]="!isUpdate">
         Input data to update and press "Update"
     </div>
     <div class="card-heading p-2 mx-auto">
-        <button type="button" [disabled]="inputTime.invalid || inputFirstN" class="btn btn-outline-secondary" (click)="updateAircraft(number,time)">Update</button>
+        <button type="button" [disabled]="nameIn.invalid || inputLife.invalid || inputTime.invalid" class="btn btn-outline-secondary" (click)="updateAircraft(name,time,life)">Update</button>
     </div>
 </div>

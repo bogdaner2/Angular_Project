@@ -1,13 +1,56 @@
-<div class="offset-md-2 col-md-10">
-  <h2>Crew</h2>
-  <div class="row">
-  <div class="card" style="width: 18rem;margin-left:20px;" *ngFor="let t of Crews">
-    <div class="card-body">
-      <h5 class="card-title">Price : {{t.pilotId}}</h5>
-      <h6 *ngFor="let s of t.stewardessesId" class="card-subtitle mb-2 text-muted">Numer : {{s.id}}</h6>
-      <input type="submit" class="btn-error btn" value="Delete" (click)="deleteCrew(t.id)" />
-      <p class="card-text"><input type="submit" value="Crew" (click)="createCrew()" />
-        <input type="submit" value="Update" (click)="updateCrew()" /></p>
-    </div>
+<div class="row justify-content-center">
+    <div > <h1>Crews</h1></div> 
+ </div>
+ <div class="row justify-content-center mb-2">
+    <div ><button type="button"  class="btn btn-warning btn-lg"  data-toggle="modal" data-target="#modalCreate" >Create</button></div>
+ </div> 
+<div class="row justify-content-center ">
+<div class="card m-2 card-width" *ngFor="let t of Crews">
+  <div class="card-header card-header-color text-white ">Crew Id : {{t.id}}
+    <a class="btn-info float-right"  [routerLink]="['/Crews', t.id]"><i class="fas fa-question"></i></a>
   </div>
+  <div class="card-body">
+    <div class="card-subtitle mb-2 text-muted">PilotId : {{t.pilotId}}</div>
+    <div class="card-subtitle mb-2 text-muted">Stew : {{t.stewardessesId}}</div>
+    <div class="justify-content-center">
+    <button type="button" class="btn btn-success " [routerLink]="['/Crews', t.id]" >Update</button>
+    <button type="button" class="btn btn-danger ml-1" (click)="deleteCrew(t.id)">Delete</button>
+    </div>
+</div>
+</div>
+<div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Create new object</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Input Crew number </label>
+                <input class="form-control" name="title" [(ngModel)]="number" minlength="4" required #inputNumber="ngModel"/>
+            </div>
+            <div *ngIf="inputNumber.invalid && (inputNumber.dirty || inputNumber.touched)" class="alert alert-danger">
+               <div>
+                   Length have to be more than 4!
+               </div>
+            </div>
+            <div class="form-group">
+                <label>Input price </label>
+                <input  class="form-control" name="price" [(ngModel)]="price" required maxlength="4" pattern="[1-9]{1}[0-9]+" #inputPrice="ngModel"/>
+            </div>
+            <div *ngIf="inputPrice.invalid && (inputPrice.dirty || inputPrice.touched)" class="alert alert-danger">
+                <div>
+                    Price have to be between 10 and 9999$!
+                </div>
+             </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" [disabled]="inputNumber.invalid || inputPrice.invalid"  class="btn btn-success" data-dismiss="modal" (click)="createCrew(number, price)">Yes</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
   </div>

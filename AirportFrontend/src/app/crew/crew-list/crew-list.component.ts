@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CrewService } from '../crew.service';
 import { Crew } from '../crew';
+import { Stewardess } from '../../stewardesses/stewardess';
+import { Pilot } from '../../pilots/pilot';
+import { PilotService } from '../../pilots/pilot.service';
+import { StewardessService } from '../../stewardesses/stewardess.service';
 
 @Component({
   selector: 'app-crew-list',
@@ -10,8 +14,13 @@ import { Crew } from '../crew';
 export class CrewListComponent implements OnInit {
   Crews : Array<Crew>;
   lastId : number;
+  Stewardesses : Array<Stewardess>
+  Pilots : Array<Pilot>
+  SelectedStewardesses : Array<Stewardess>
 
-  constructor(public service : CrewService){ }
+  constructor(public service : CrewService,
+    public servicePilot : PilotService,
+    public serviceStewardess : StewardessService){ }
 
    ngOnInit(){
     this.getCrews();
@@ -22,6 +31,10 @@ export class CrewListComponent implements OnInit {
     this.Crews = data;
     this.lastId = this.Crews[this.Crews.length - 1].id;
     })
+    this.servicePilot.getAllPilots().subscribe((data : Array<Pilot>) => {
+      this.Pilots = data;});
+    this.serviceStewardess.getAllStewardesses().subscribe((data : Array<Stewardess>) => {
+      this.Stewardesses = data;});
   }
 
   createCrew(){
@@ -37,12 +50,8 @@ export class CrewListComponent implements OnInit {
     this.Crews = this.Crews.filter(e => { return e.id !== id; });
   }
 
-  updateCrew() {
-    let crew = new Crew(0,1,[1,2]);
-    this.service.updateCrew(1,crew).subscribe();
-    let temp = this.Crews.find(x => x.id == 1)
-    temp.pilotId= crew.pilotId;
-    temp.stewardessesId = crew.stewardessesId;
+  addStewardess(){
+
   }
 
 }

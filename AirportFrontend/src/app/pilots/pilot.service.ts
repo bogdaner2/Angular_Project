@@ -11,7 +11,7 @@ export class PilotService {
 
   constructor(private http: HttpClient){ }
     
-  getAllPilotes(){     
+  getAllPilots(){     
     return this.http.get(this.url);
   }
 
