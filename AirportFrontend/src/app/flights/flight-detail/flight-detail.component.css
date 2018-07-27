@@ -1,0 +1,25 @@
+.card-width{
+    max-width: 50%;
+}
+
+@media (max-width: 575.98px) { 
+    .card-width{
+        max-width: 100%;
+    }
+ }
+
+@media (max-width: 767.98px) {  
+    .card-width{
+        max-width: 75%;
+    }
+}
+
+.tik-select{
+    width: 80% ;
+     float:left;
+}
+
+.tik-btn{
+    width: 15% ;
+     margin-left: 5%;
+}

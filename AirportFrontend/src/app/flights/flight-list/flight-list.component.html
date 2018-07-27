@@ -8,6 +8,7 @@
 <div class="card m-2 card-width" *ngFor="let f of Flights">
   <div class="card-header card-header-color text-white ">Flight Id : {{f.id}}</div>
   <div class="card-body">
+  <div class="card-subtitle mb-2 text-muted  ">Number : {{f.number}}</div>
   <div class="card-subtitle mb-2 text-muted  ">Departure : {{f.pointOfDeparture}}</div>
   <div class="card-subtitle mb-2 text-muted  ">Departure time : {{f.departureTime}}</div>
   <div class="card-subtitle mb-2 text-muted  ">Destination : {{f.destination}}</div>

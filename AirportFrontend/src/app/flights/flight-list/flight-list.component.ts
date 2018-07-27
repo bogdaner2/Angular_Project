@@ -48,7 +48,6 @@ export class FlightListComponent implements OnInit {
 
   changeTicket($event){
     this.ticketId = $event.id;
-    console.log(this.ticketId);
     }
 
   addTicket(){

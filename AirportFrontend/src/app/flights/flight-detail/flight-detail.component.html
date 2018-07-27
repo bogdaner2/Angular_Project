@@ -1,3 +1,114 @@
-<p>
-  flight-detail works!
-</p>
+<div class="row justify-content-center">
+    <h1>Flight Info</h1>
+</div>
+<div class="card mx-auto card-width">
+    <div class="card-heading p-2"><h4>Flight id : {{flight?.id}}</h4></div>
+    <hr>
+    <div class="card-heading p-2">
+        Number : {{flight?.number}} <br>
+        <input class="form-control" 
+        [disabled]="!isUpdate"
+        placeholder="{{flight?.number}}"
+        [(ngModel)]="number" 
+        minlength="4" 
+        required 
+        #inputNum="ngModel"/>
+    </div>
+    <div [hidden]="!isUpdate" *ngIf="inputNum.invalid && (inputNum.dirty || inputNum.untouched)" class="alert alert-danger">
+        <div>
+            Length have to be more than 4!
+        </div>
+    </div>
+    <div class="card-heading p-2">
+        Point of departure : {{flight?.pointOfDeparture}} <br>
+        <input class="form-control" 
+        [disabled]="!isUpdate"
+        placeholder="{{flight?.pointOfDeparture}}"
+        [(ngModel)]="dep" 
+        minlength="4" 
+        required 
+        #inputDep="ngModel"/>
+    </div>
+    <div [hidden]="!isUpdate" *ngIf="inputDep.invalid && (inputDep.dirty || inputDep.untouched)" class="alert alert-danger card-heading p-2">
+        <div>
+           Length have to be more than 4!
+        </div>
+    </div>
+    <div class="card-heading p-2">
+        Departure time: {{flight?.departureTime}} <br>
+        <input class="form-control" 
+        [disabled]="!isUpdate" 
+        placeholder="{{flight?.departureTime}}" 
+        [(ngModel)]="depTime" 
+        maxlenth="10"
+        pattern="^([0-2][0-9]|(3)[0-1])(.)(((0)[0-9])|((1)[0-2]))(.)\d{4}$"
+        required 
+        #inputdepTime="ngModel"/> 
+    </div>
+    <div [hidden]="!isUpdate" *ngIf="inputdepTime.invalid && (inputdepTime.dirty || inputdepTime.untouched)" class="alert alert-danger card-heading m-2">
+        <div>
+            Date formt dd.mm.yyyy!
+        </div>
+    </div>
+    <div class="card-heading p-2">
+        Point of departure : {{flight?.destination}} <br>
+        <input class="form-control" 
+        [disabled]="!isUpdate"
+        placeholder="{{flight?.destination}}"
+        [(ngModel)]="dest" 
+        minlength="4" 
+        required 
+        #inputDest="ngModel"/>
+    </div>
+    <div [hidden]="!isUpdate" *ngIf="inputDest.invalid && (inputDest.dirty || inputDest.untouched)" class="alert alert-danger card-heading p-2">
+        <div>
+           Length have to be more than 4!
+        </div>
+    </div>
+    <div class="card-heading p-2">
+        Arrival time: {{flight?.arrivelTime}} <br>
+        <input class="form-control" 
+        [disabled]="!isUpdate" 
+        placeholder="{{flight?.arrivelTime}}" 
+        [(ngModel)]="arrTime" 
+        maxlenth="10"
+        pattern="^([0-2][0-9]|(3)[0-1])(.)(((0)[0-9])|((1)[0-2]))(.)\d{4}$"
+        required 
+        #inputarrTime="ngModel"/> 
+    </div>
+    <div [hidden]="!isUpdate" *ngIf="inputarrTime.invalid && (inputarrTime.dirty || inputarrTime.untouched)" class="alert alert-danger card-heading m-2">
+        <div>
+            Date formt dd.mm.yyyy!
+        </div>
+    </div>
+    <div class="card-heading p-2"> Tickets id :</div>
+    <div class="card-heading p-2" *ngFor="let t of flight?.ticketsId"> Id : {{t}}</div>
+    <div class="card-heading p-2">
+    <div class="form-group" [hidden]="!isUpdate" style="display: flex;">
+                
+        <select  class="form-control tik-select" [disabled]="!isUpdate" (ngModelChange) = "changeTicket($event)" name="tik" [(ngModel)]="tik" required  #tikIn="ngModel" >
+            <option  *ngFor="let t of tickets" [ngValue]="t" >
+             Id : {{t.id}} Number : {{t.number}} 
+            </option>
+        </select>
+        <button  type="button" class="btn btn-danger tik-btn" (click)="addTicket()"> Add</button>
+    </div>
+    <div *ngIf="tikIn.invalid && (tikIn.dirty || tikIn.untouched)" class="alert alert-danger">
+        <div>
+            Please,select option!
+        </div>
+    </div>
+    <div class="form-group" [hidden]="selectedTickets.length == 0">
+      Selected :
+    </div>
+    <div class="form-group" *ngFor="let ss of selectedTickets">
+        Id : {{ss}} 
+    </div>
+  </div>
+    <div class="card-heading p-2" [hidden]="!isUpdate">
+        Input data to update and press "Update"
+    </div>
+    <div class="card-heading p-2 mx-auto">
+        <button type="button" [disabled]="inputDep.invalid || inputNum.invalid || inputDest.invalid || inputdepTime.invalid || inputarrTime.invalid" class="btn btn-outline-secondary" (click)="updateFlight(number,dep,depTime,dest,arrTime)">Update</button>
+    </div>
+</div>
