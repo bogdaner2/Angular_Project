@@ -16,7 +16,8 @@ export class CrewListComponent implements OnInit {
   lastId : number;
   Stewardesses : Array<Stewardess>
   Pilots : Array<Pilot>
-  SelectedStewardesses : Array<Stewardess>
+  SelectedStewardesses : Array<number>
+  pilotID : number;
 
   constructor(public service : CrewService,
     public servicePilot : PilotService,
@@ -38,7 +39,7 @@ export class CrewListComponent implements OnInit {
   }
 
   createCrew(){
-    let crew = new Crew(0,1,[1,2])
+    let crew = new Crew(0,this.pilotID,this.SelectedStewardesses)
     this.service.createCrew(crew).subscribe();
     this.lastId++;
     crew.id = this.lastId;
@@ -51,6 +52,10 @@ export class CrewListComponent implements OnInit {
   }
 
   addStewardess(){
+
+  }
+
+  changePilot($event){
 
   }
 

@@ -7,13 +7,21 @@
 <div class="row justify-content-center ">
 <div class="card m-2 card-width" *ngFor="let t of Crews">
   <div class="card-header card-header-color text-white ">Crew Id : {{t.id}}
-    <a class="btn-info float-right"  [routerLink]="['/Crews', t.id]"><i class="fas fa-question"></i></a>
+    <a class="btn-info float-right"  [routerLink]="['/crews', t.id]"><i class="fas fa-question"></i></a>
   </div>
   <div class="card-body">
-    <div class="card-subtitle mb-2 text-muted">PilotId : {{t.pilotId}}</div>
-    <div class="card-subtitle mb-2 text-muted">Stew : {{t.stewardessesId}}</div>
-    <div class="justify-content-center">
-    <button type="button" class="btn btn-success " [routerLink]="['/Crews', t.id]" >Update</button>
+    <div class="card-subtitle mb-2 text-muted">Pilot id : {{t.pilotId}}
+        <button type="button" class="btn btn-link text-muted" [routerLink]="['/pilots', t.pilotId]" ><i class="fas fa-info info-sign"></i></button>
+    </div>
+    <hr>
+    <div class="card-subtitle mb-2 ">Stewardesses : </div>
+    <div class="card-subtitle mb-2 text-muted" *ngIf="t.stewardessesId.length === 0" >No stewardesses </div>
+    <div class="card-subtitle mb-2 text-muted" *ngFor="let s of t.stewardessesId" >Stewardesses id : {{s}}
+        <button type="button" class="btn btn-link text-muted" [routerLink]="['/stewardesses', s]" ><i class="fas fa-info info-sign"></i></button>
+    </div>
+    <div class="space"><span >s</span></div>
+    <div class="btn-crud" >
+    <button type="button" class="btn btn-success " [routerLink]="['/crews', t.id]" >Update</button>
     <button type="button" class="btn btn-danger ml-1" (click)="deleteCrew(t.id)">Delete</button>
     </div>
 </div>
@@ -29,23 +37,23 @@
         </div>
         <div class="modal-body">
             <div class="form-group">
-                <label>Input Crew number </label>
-                <input class="form-control" name="title" [(ngModel)]="number" minlength="4" required #inputNumber="ngModel"/>
+                <label>Choose a pilot</label>
+                <select class="form-control" (ngModelChange) = "ChangePilot($event)"  [(ngModel)]="pilot" required  #pilotIn="ngModel" >
+                    <option  *ngFor="let p of Pilots" [ngValue]="p" >
+                     Id : {{p.id}} Name : {{p.firstName}} Exp : {{p.experience}} year
+                    </option>
+                </select>
             </div>
-            <div *ngIf="inputNumber.invalid && (inputNumber.dirty || inputNumber.touched)" class="alert alert-danger">
-               <div>
-                   Length have to be more than 4!
-               </div>
+            <label>Choose stewardesses</label>
+            <div class="form-group" style="display: flex;">
+                
+                <select style="width: 80% ; float:left;" class="form-control" (ngModelChange) = "ChangeCrew($event)" name="crew" [(ngModel)]="crew" required  #crewIn="ngModel" >
+                    <option  *ngFor="let s of Stewardesses" [ngValue]="s" >
+                     Id : {{s.id}} Name : {{s.firstName}} 
+                    </option>
+                </select>
+                <button  style="width: 15% ; margin-left: 5%;" type="button" class="btn btn-danger" data-dismiss="modal">No</button>
             </div>
-            <div class="form-group">
-                <label>Input price </label>
-                <input  class="form-control" name="price" [(ngModel)]="price" required maxlength="4" pattern="[1-9]{1}[0-9]+" #inputPrice="ngModel"/>
-            </div>
-            <div *ngIf="inputPrice.invalid && (inputPrice.dirty || inputPrice.touched)" class="alert alert-danger">
-                <div>
-                    Price have to be between 10 and 9999$!
-                </div>
-             </div>
         </div>
         <div class="modal-footer">
           <button type="button" [disabled]="inputNumber.invalid || inputPrice.invalid"  class="btn btn-success" data-dismiss="modal" (click)="createCrew(number, price)">Yes</button>
