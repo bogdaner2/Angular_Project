@@ -5,9 +5,8 @@
     <div class="card-heading p-2"><h4>Aircraft type id : {{aircraftType?.id}}</h4></div>
     <hr>
     <div class="card-heading p-2">
-        Model: <span class="required-sign">*</span>
+        Model: {{aircraftType?.model}} <br>
         <input class="form-control" 
-        value="{{aircraftType?.model}}" 
         [disabled]="!isUpdate"
         placeholder="{{aircraftType?.model}}"
         name="model" 
@@ -16,32 +15,31 @@
         required 
         #inputModel="ngModel"/>
     </div>
-    <div *ngIf="inputModel.invalid && (inputModel.dirty || inputModel.touched)" class="alert alert-danger card-heading m-2">
+    <div [hidden]="!isUpdate" *ngIf="inputModel.invalid && (inputModel.dirty || inputModel.untouched)" class="alert alert-danger card-heading m-2">
         <div>
             Length have to be more than 4!
         </div>
     </div>
     <div class="card-heading p-2">
-        Count of seats: <span class="required-sign">*</span>
+        Count of seats: {{aircraftType?.countOfSeats}} <br>
         <input class="form-control" 
-        name="seats" value="{{aircraftType?.countOfSeats}}" 
+        name="seats"
         [disabled]="!isUpdate" 
         placeholder="{{aircraftType?.countOfSeats}}" 
-        [(ngModel)]="seats" 
-        maxlength="3"
-        pattern="[1-9]{1}[0-9]+" 
+        [(ngModel)]="seats"
+        maxlength="4" 
+        pattern="\b([1-9]|[1-8][0-9]|9[0-9]|[1-8][0-9]{2}|9[0-8][0-9]|99[0-9]|1000)\b" 
         required 
         #inputSeats="ngModel"/> 
     </div>
-    <div *ngIf="inputSeats.invalid && (inputSeats.dirty || inputSeats.touched)" class="alert alert-danger card-heading m-2">
+    <div [hidden]="!isUpdate" *ngIf="inputSeats.invalid && (inputSeats.dirty || inputSeats.untouched)" class="alert alert-danger card-heading m-2">
         <div>
-            Seats have to be between 10 and 999!
+            Seats have to be between 1 and 1000!
         </div>
     </div>
     <div class="card-heading p-2">
-        Carrying capacity: <span class="required-sign">*</span>
+        Carrying capacity: {{aircraftType?.carryingCapacity}} <br>
         <input class="form-control" 
-        value="{{aircraftType?.carryingCapacity}}" 
         [disabled]="!isUpdate"
         placeholder="{{aircraftType?.carryingCapacity}}"
         name="capacity" 
@@ -52,7 +50,7 @@
         required 
         #inputCapacity="ngModel"/>
     </div>
-    <div *ngIf="inputCapacity.invalid && (inputCapacity.dirty || inputCapacity.touched)" class="alert alert-danger card-heading m-2">
+    <div [hidden]="!isUpdate" *ngIf="inputCapacity.invalid && (inputCapacity.dirty || inputCapacity.untouched)" class="alert alert-danger card-heading m-2">
         <div>
             Capacity have to be between 1000 and 999999 kg!
         </div>
@@ -61,6 +59,6 @@
         Input data to update and press "Update"
     </div>
     <div class="card-heading p-2 mx-auto">
-        <button type="button" class="btn btn-outline-secondary" (click)="updateAircraftType(model,seats,capacity)">Update</button>
+        <button type="button" [disabled]="inputModel.invalid || inputSeats.invalid || inputCapacity.invalid " class="btn btn-outline-secondary" (click)="updateAircraftType(model,seats,capacity)">Update</button>
     </div>
 </div>

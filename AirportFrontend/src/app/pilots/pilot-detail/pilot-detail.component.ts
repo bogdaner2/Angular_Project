@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Pilot } from '../pilot';
+import { ActivatedRoute } from '../../../../node_modules/@angular/router';
+import { PilotService } from '../pilot.service';
 
 @Component({
   selector: 'app-pilot-detail',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PilotDetailComponent implements OnInit {
 
-  constructor() { }
+  pilot : Pilot;
+  isUpdate : boolean = false;
 
-  ngOnInit() {
+  constructor(public service : PilotService,private route: ActivatedRoute){
+
+    let id = parseInt(route.snapshot.paramMap.get('id'));
+    service.getPilot(id).subscribe((data : Pilot) => {
+      this.pilot = data;
+          })  
   }
 
+  ngOnInit(){
+  }
+
+  updatePilot(firstName : string, lastName : string,dateOfBirth:string,experience : number) {
+    if(this.isUpdate == false){
+      this.isUpdate = true
+      return;
+    }
+    let pilot = new Pilot(0,firstName,lastName,dateOfBirth,experience);
+    this.service.updatePilot(this.pilot.id,pilot).subscribe();
+    this.isUpdate = false;
+  }
 }

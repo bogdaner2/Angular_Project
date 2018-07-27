@@ -25,8 +25,8 @@ export class PilotListComponent implements OnInit {
     })
   }
 
-  createPilot(){
-    let pilot = new Pilot(1,"Luska","Petrova","10.06.2018",5);
+  createPilot(firstName : string, lastName : string,dateOfBirth:string,experience : number){
+    let pilot = new Pilot(0,firstName,lastName,dateOfBirth,experience);
     this.service.createPilot(pilot).subscribe();
     this.lastId++;
     pilot.id = this.lastId;
@@ -37,15 +37,4 @@ export class PilotListComponent implements OnInit {
     this.service.deletePilot(id).subscribe();
     this.Pilots = this.Pilots.filter(e => { return e.id !== id; });
   }
-
-  updatePilot() {
-    let pilot = new Pilot(1,"Luska","Petrova","10.06.2018",5);
-    this.service.updatePilot(1,pilot).subscribe();
-    let temp = this.Pilots.find(x => x.id == 1);
-    temp.firstName = pilot.firstName;
-    temp.lastName = pilot.lastName;
-    temp.dateOfBirth = pilot.dateOfBirth;
-    temp.experience = pilot.experience;
-  }
-
 }

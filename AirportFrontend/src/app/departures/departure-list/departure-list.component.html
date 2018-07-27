@@ -1,15 +1,74 @@
-<div class="offset-md-2 col-md-10">
-  <h2>Departures</h2>
-  <div class="row">
-  <div class="card" style="width: 18rem;margin-top:20px;" *ngFor="let t of Departures">
-    <div class="card-body">
-      <h5 class="card-title">Point of Depature : {{t.departureTime}}</h5>
-      <h5 class="card-title">Point of Depature : {{t.number}}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">Destination : {{t.crewId}}</h6>
-      <h6 class="card-subtitle mb-2 text-muted">Destination : {{t.aircraftId}}</h6>
-      <input type="submit" class="btn-error btn" value="Delete" (click)="deleteDeparture(t.id)" />
-      <p class="card-text"><input type="submit" value="БИЛЕТ" (click)="createDeparture()" />
-        <input type="submit" value="Update" (click)="updateDeparture()" /></p>
-    </div>
+<div class="row justify-content-center">
+    <div > <h1>Departures</h1></div> 
+ </div>
+ <div class="row justify-content-center mb-2">
+    <div ><button type="button"  class="btn btn-warning btn-lg"  data-toggle="modal" data-target="#modalCreate" >Create</button></div>
+ </div> 
+<div class="row justify-content-center ">
+<div class="card m-2 card-width" *ngFor="let d of Departures">
+  <div class="card-header card-header-color text-white ">Departure Id : {{d.id}}
+    <a class="btn-info float-right"  [routerLink]="['/departures', d.id]"><i class="fas fa-question"></i></a>
   </div>
+  <div class="card-body">
+    <div class="card-subtitle mb-2 text-muted">Number : {{d.number}}</div>
+    <div class="card-subtitle mb-2 text-muted">Departure time : {{d.departureTime}}</div>
+    <div class="card-subtitle mb-2 text-muted">Crew №: {{d.crewId}}</div>
+    <div class="card-subtitle mb-2 text-muted">Aircraft № : {{d.aircraftId}}</div>
+    <div class="justify-content-center">
+    <button type="button" class="btn btn-success " [routerLink]="['/departures', d.id]" >Update</button>
+    <button type="button" class="btn btn-danger ml-1" (click)="deleteDeparture(d.id)">Delete</button>
+    </div>
+</div>
+</div>
+<div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Create new object</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Input departure number </label>
+                <input class="form-control" name="title" [(ngModel)]="number" minlength="6" required #inputNumber="ngModel"/>
+            </div>
+            <div *ngIf="inputNumber.invalid && (inputNumber.dirty || inputNumber.touched)" class="alert alert-danger">
+               <div>
+                   Length have to be more than 6!
+               </div>
+            </div>
+            <div class="form-group">
+                <label>Input departure time </label>
+                <input  class="form-control" name="time" [(ngModel)]="time" required maxlenth="10" pattern="^([0-2][0-9]|(3)[0-1])(.)(((0)[0-9])|((1)[0-2]))(.)\d{4}$" #inputTime="ngModel"/>
+            </div>
+            <div *ngIf="inputTime.invalid && (inputTime.dirty || inputTime.touched)" class="alert alert-danger">
+                <div>
+                    Format dd.mm.yyyy!
+                </div>
+             </div>
+             <div class="form-group">
+                <label>Select crew</label>
+                <select class="form-control" (ngModelChange) = "ChangeCrew($event)" name="crew" [(ngModel)]="crew" required  #crewIn="ngModel" >
+                    <option  *ngFor="let c of Crews" [ngValue]="c" >
+                     Id : {{c.id}} Stewardesses on the board : {{c.stewardessesId.length}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                    <label>Select aircraft</label>
+                    <select class="form-control" (ngModelChange) = "ChangeAircraft($event)" name="aircraft" [(ngModel)]="aircraft"  required #airIn="ngModel"  >
+                        <option  *ngFor="let a of Aircrafts" [ngValue]="a" >
+                         Id : {{a.id}} Name : {{a.name}}
+                        </option>
+                    </select>
+                </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" [disabled]="inputNumber.invalid || inputTime.invalid || crewIn.invalid || airIn.invalid"  class="btn btn-success" data-dismiss="modal" (click)="createDeparture(number,time)">Yes</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
   </div>

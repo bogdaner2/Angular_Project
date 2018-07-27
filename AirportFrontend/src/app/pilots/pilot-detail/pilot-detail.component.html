@@ -1,3 +1,77 @@
-<p>
-  pilot-detail works!
-</p>
+<div class="row justify-content-center">
+    <h1>Pilot Info</h1>
+</div>
+<div class="card mx-auto card-width">
+    <div class="card-heading p-2"><h4>pilot id : {{pilot?.id}}</h4></div>
+    <hr>
+    <div class="card-heading p-2">
+        First Name: {{pilot?.firstName}} <br> 
+        <input class="form-control" 
+        [disabled]="!isUpdate"
+        placeholder="{{pilot?.firstName}}"
+        name="firstName" 
+        [(ngModel)]="firstN" 
+        minlength="4" 
+        required 
+        #inputFirstN="ngModel"/>
+    </div>
+    <div [hidden]="!isUpdate" *ngIf="inputFirstN.invalid && (inputFirstN.untouched || inputFirstN.dirty) " class="alert alert-danger card-heading m-2">
+        <div>
+            Length have to be more than 4!
+        </div>
+    </div>
+    <div class="card-heading p-2">
+        Last Name: {{pilot?.lastName}} <br> <input class="form-control" 
+        [disabled]="!isUpdate"
+        placeholder="{{pilot?.lastName}}"
+        [(ngModel)]="lastN" 
+        minlength="4" 
+        required 
+        #inputlastN="ngModel"/> 
+    </div>
+    <div [hidden]="!isUpdate" *ngIf="inputlastN.invalid  && (inputlastN.untouched || inputlastN.dirty)" class="alert alert-danger card-heading m-2">
+        <div>
+            Length have to be more than 4!
+        </div>
+    </div>
+    <div class="card-heading p-2">
+        Experience : {{pilot?.experience}} years
+        <br> 
+        <input class="form-control" 
+        name="bith"
+        [disabled]="!isUpdate" 
+        placeholder="{{pilot?.experience}}" 
+        [(ngModel)]="exp" 
+        required 
+        #inputExp="ngModel"/> 
+    </div>
+    <div [hidden]="!isUpdate" *ngIf="inputExp.invalid && (inputExp.untouched || inputExp.dirty)" class="alert alert-danger card-heading m-2">
+        <div>
+            Experience have to be between 1 and 50!
+        </div>
+    </div>
+    <div class="card-heading p-2">
+        Date of birth: {{pilot?.dateOfBirth}}
+        <br> 
+        <input class="form-control" 
+        name="bith" 
+        [disabled]="!isUpdate" 
+        placeholder="{{pilot?.dateOfBirth}}" 
+        [(ngModel)]="birth" 
+        maxlenth="10"
+        pattern="^([0-2][0-9]|(3)[0-1])(.)(((0)[0-9])|((1)[0-2]))(.)\d{4}$"
+        required 
+        #inputBirth="ngModel"/> 
+    </div>
+    <div [hidden]="!isUpdate" *ngIf="inputBirth.invalid && (inputBirth.untouched || inputBirth.dirty)" class="alert alert-danger card-heading m-2">
+        <div>
+            Date formt dd.mm.yyyy!
+        </div>
+    </div>
+    <div class="card-heading p-2" [hidden]="!isUpdate">
+        Input data to update and press "Update"
+    </div>
+    <div class="card-heading p-2 mx-auto">
+        <button type="button" [disabled]="inputFirstN.invalid || inputlastN.invalid || inputBirth.invalid || inputExp.invalid" class="btn btn-outline-secondary" (click)="updatePilot(firstN,lastN,birth,exp)">Update</button>
+    </div>
+</div>

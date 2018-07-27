@@ -27,7 +27,7 @@ export class AircraftListComponent implements OnInit {
   }
 
   createAircraft(){
-    let timeSpan  = "20:00:00";
+    let timeSpan  = "20:00:00.9999999";
     let aircraft = new Aircraft(0,"ARM273",3,"12.06.2000",timeSpan)
     this.service.createAircraft(aircraft).subscribe(x => console.log(x));
     this.lastId++;

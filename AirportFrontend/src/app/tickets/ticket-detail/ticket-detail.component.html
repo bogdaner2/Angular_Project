@@ -5,9 +5,8 @@
     <div class="card-heading p-2"><h4>Ticket id : {{ticket?.id}}</h4></div>
     <hr>
     <div class="card-heading p-2">
-        Price: <span class="required-sign">*</span>
+        Price: {{ticket?.price}} <br>
         <input class="form-control" 
-        value="{{ticket?.price}}" 
         [disabled]="!isUpdate"
         placeholder="{{ticket?.price}}"
         name="price" 
@@ -17,15 +16,15 @@
         required 
         #inputPrice="ngModel"/>
     </div>
-    <div *ngIf="inputPrice.invalid && (inputPrice.dirty || inputPrice.touched)" class="alert alert-danger card-heading m-2">
+    <div [hidden]="!isUpdate" *ngIf="inputPrice.invalid && (inputPrice.dirty || inputPrice.untouched)" class="alert alert-danger card-heading m-2">
         <div>
             Price have to be between 10 and 9999$!
         </div>
     </div>
     <div class="card-heading p-2">
-        Number: <span class="required-sign">*</span>
+        Number: {{ticket?.number}} <br>
         <input class="form-control" 
-        name="number" value="{{ticket?.number}}" 
+        name="number"
         [disabled]="!isUpdate" 
         placeholder="{{ticket?.number}}" 
         [(ngModel)]="number" 
@@ -33,7 +32,7 @@
         required 
         #inputNumber="ngModel"/> 
     </div>
-    <div *ngIf="inputNumber.invalid && (inputNumber.dirty || inputNumber.touched)" class="alert alert-danger card-heading m-2">
+    <div [hidden]="!isUpdate" *ngIf="inputNumber.invalid && (inputNumber.dirty || inputNumber.untouched)" class="alert alert-danger card-heading m-2">
         <div>
             Length have to be more than 4!
         </div>
@@ -42,6 +41,6 @@
         Input data to update and press "Update"
     </div>
     <div class="card-heading p-2 mx-auto">
-        <button type="button" class="btn btn-outline-secondary" (click)="updateTicket(number,price)">Update</button>
+        <button type="button"  [disabled]="inputNumber.invalid || inputPrice.invalid "class="btn btn-outline-secondary" (click)="updateTicket(number,price)">Update</button>
     </div>
 </div>

@@ -39,16 +39,16 @@
                </div>
             </div>
             <div class="form-group">
-                <label>Input count of seats </label>
-                <input  class="form-control" name="Seats" [(ngModel)]="seats" required maxlength="3" pattern="[1-9]{1}[0-9]+" #inputSeats="ngModel"/>
+                <label>Input count of seats <span class="required-sign">*</span></label>
+                <input  class="form-control" name="Seats" [(ngModel)]="seats" required maxlength="4" pattern="\b([1-9]|[1-8][0-9]|9[0-9]|[1-8][0-9]{2}|9[0-8][0-9]|99[0-9]|1000)\b" #inputSeats="ngModel"/>
             </div>
             <div *ngIf="inputSeats.invalid && (inputSeats.dirty || inputSeats.touched)" class="alert alert-danger">
                 <div>
-                    Seats have to be between 10 and 999!
+                    Seats have to be between 1 and 1000!
                 </div>
              </div>
              <div class="form-group">
-                <label>Input carrying capacity</label>
+                <label>Input carrying capacity <span class="required-sign">*</span></label>
                 <input  class="form-control" name="Capacity" [(ngModel)]="capacity" required minlength="4" maxlength="6" pattern="[1-9]{1}[0-9]+" #inputCapacity="ngModel"/>
             </div>
             <div *ngIf="inputCapacity.invalid && (inputCapacity.dirty || inputCapacity.touched)" class="alert alert-danger">
