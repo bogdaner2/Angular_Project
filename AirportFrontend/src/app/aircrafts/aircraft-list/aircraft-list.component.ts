@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AircraftService } from '../aircraft.service';
 import { Aircraft } from '../aircraft';
+import { AircraftType } from '../../aircraft-types/aircraftType';
+import { AircraftTypeService } from '../../aircraft-types/aircraft-type.service';
 
 @Component({
   selector: 'app-aircraft-list',
@@ -11,9 +13,11 @@ import { Aircraft } from '../aircraft';
 export class AircraftListComponent implements OnInit {
 
   Aircrafts : Array<Aircraft>;
+  Types : Array<AircraftType>;
+  typeId :number;
   lastId : number;
 
-  constructor(public service : AircraftService){ }
+  constructor(public service : AircraftService,public serviceType : AircraftTypeService){ }
 
    ngOnInit(){
     this.getAircrafts();
@@ -24,15 +28,17 @@ export class AircraftListComponent implements OnInit {
     this.Aircrafts = data;
     this.lastId = this.Aircrafts[this.Aircrafts.length - 1].id;
     })
+    this.serviceType.getAllAircraftTypes().subscribe((data : Array<AircraftType>) => {
+    this.Types = data;
+    })
   }
 
-  createAircraft(){
-    let timeSpan  = "20:00:00.9999999";
-    let aircraft = new Aircraft(0,"ARM273",3,"12.06.2000",timeSpan)
-    this.service.createAircraft(aircraft).subscribe(x => console.log(x));
+  createAircraft(name : string , releaseTime : string,lifetime : string){
+    let aircraft = new Aircraft(0,name,this.typeId,releaseTime,lifetime+":00:00.999999")
+    console.log(aircraft);
+    this.service.createAircraft(aircraft).subscribe();
     this.lastId++;
     aircraft.id = this.lastId;
-    aircraft.lifetime = timeSpan.slice(0,2);
     this.Aircrafts.push(aircraft); 
   }
 
@@ -41,16 +47,8 @@ export class AircraftListComponent implements OnInit {
     this.Aircrafts = this.Aircrafts.filter(e => { return e.id !== id; }); 
   }
 
-  updateAircraft() {
-    let timeSpan  = "12:00:00";
-    let aircraft = new Aircraft(0,"SOS777",3,"12.06.2017",timeSpan)
-    this.service.updateAircraft(1,aircraft).subscribe();
-    let temp = this.Aircrafts.find(x => x.id == 1);
-    temp.name = aircraft.name;
-    temp.lifetime = aircraft.lifetime;
-    temp.releseDate = aircraft.releseDate;
-    temp.typeId = aircraft.typeId;   
-  }
-
+  ChangeType($event){
+    this.typeId = $event.id;
+   }
 
 }

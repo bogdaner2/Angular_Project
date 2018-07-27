@@ -50,16 +50,6 @@ export class DepartureListComponent implements OnInit {
     this.Departures = this.Departures.filter(e => { return e.id !== id; });
   }
 
-  updateDeparture() {
-    let departure = new Departure(0,"AAA111","06-04-2017",1,1);
-    this.service.updateDeparture(1,departure).subscribe();
-    let temp = this.Departures.find(x => x.id == 1);
-    temp.number = departure.number;
-    temp.departureTime = departure.departureTime;
-    temp.aircraftId = departure.aircraftId;
-    temp.crewId = departure.crewId;
-  }
-
   ChangeCrew($event){
    this.crewId = $event.id;
   }

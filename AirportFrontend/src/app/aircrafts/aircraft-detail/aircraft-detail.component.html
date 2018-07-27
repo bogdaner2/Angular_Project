@@ -1,3 +1,71 @@
-<p>
-  aircraft-detail works!
-</p>
+<div class="row justify-content-center">
+    <h1>Aircraft Info</h1>
+</div>
+<div class="card mx-auto card-width">
+    <div class="card-heading p-2"><h4>Aircraft id : {{Aircraft?.id}}</h4></div>
+    <hr>
+    <div class="card-heading p-2">
+        Number: "{{Aircraft?.number}}" <br>
+        <input class="form-control" 
+        [disabled]="!isUpdate"
+        placeholder="{{Aircraft?.number}}"
+        [(ngModel)]="number" 
+        minlength="6"
+        maxlength="50" 
+        required 
+        #inputNumber="ngModel"/>
+    </div>
+    <div [hidden]="!isUpdate" *ngIf="inputNumber.invalid && (inputNumber.dirty || inputNumber.untouched)" class="alert alert-danger card-heading m-2">
+        <div>
+            Length have to be more than 6 and less than 50!
+        </div>
+    </div>
+    <div class="card-heading p-2">
+        Aircraft time: {{Aircraft?.AircraftTime}} <br>
+        <input class="form-control" 
+        [disabled]="!isUpdate" 
+        placeholder="{{Aircraft?.AircraftTime}}" 
+        [(ngModel)]="time" 
+        maxlength="10"
+        pattern="^([0-2][0-9]|(3)[0-1])(.)(((0)[0-9])|((1)[0-2]))(.)\d{4}$" 
+        required 
+        #inputTime="ngModel"/> 
+    </div>
+    <div [hidden]="!isUpdate" *ngIf="inputTime.invalid && (inputTime.dirty || inputTime.untouched)" class="alert alert-danger card-heading m-2">
+        <div>
+            Format dd.mm.yyyy
+        </div>
+    </div>
+    <div class="card-heading p-2">
+        Crew №: {{Aircraft?.crewId}} <br> 
+        <select [disabled]="!isUpdate"  class="form-control" (ngModelChange) = "ChangeCrew($event)" name="crew" [(ngModel)]="crew" required  #crewIn="ngModel" >
+                <option  *ngFor="let c of crews" [ngValue]="c" >
+                 Id : {{c.id}} Stewardesses on the board : {{c.stewardessesId.length}}
+                </option>
+            </select>
+    </div>
+    <div [hidden]="!isUpdate" *ngIf="crewIn.invalid && (crewIn.dirty || crewIn.untouched)" class="alert alert-danger card-heading m-2">
+            <div>
+                Length have to be more than 4!
+            </div>
+        </div>
+    <div class="card-heading p-2">
+        Aircraft id: {{Aircraft?.aircraftId}} <br> 
+        <select  [disabled]="!isUpdate" class="form-control" (ngModelChange) = "ChangeAircraft($event)" name="aircraft" [(ngModel)]="aircraft"  required #airIn="ngModel"  >
+                <option  *ngFor="let a of aircrafts" [ngValue]="a" >
+                 Id : {{a.id}} Name : {{a.name}}
+                </option>
+            </select>
+    </div>
+    <div [hidden]="!isUpdate" *ngIf="airIn.invalid && (airIn.dirty || airIn.untouched)" class="alert alert-danger card-heading m-2">
+            <div>
+                Length have to be more than 4!
+            </div>
+        </div>
+    <div class="card-heading p-2" [hidden]="!isUpdate">
+        Input data to update and press "Update"
+    </div>
+    <div class="card-heading p-2 mx-auto">
+        <button type="button" [disabled]="inputTime.invalid || inputFirstN" class="btn btn-outline-secondary" (click)="updateAircraft(number,time)">Update</button>
+    </div>
+</div>

@@ -29,8 +29,11 @@ export class AircraftTypeDetailComponent implements OnInit {
       this.isUpdate = true
       return;
     }
-    let aircraftType = new AircraftType(0,model,seats,capacity);
-    this.service.updateAircraftType(this.aircraftType.id,aircraftType).subscribe();
+    let _aircraftType = new AircraftType(0,model,seats,capacity);
+    let _id = this.aircraftType.id;
+    this.service.updateAircraftType(_id,_aircraftType).subscribe();
+    this.aircraftType = _aircraftType;
+    this.aircraftType.id = _id;
     this.isUpdate = false
   }
 }

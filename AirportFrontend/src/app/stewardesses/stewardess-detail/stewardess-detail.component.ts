@@ -29,9 +29,13 @@ export class StewardessDetailComponent implements OnInit {
       this.isUpdate = true
       return;
     }
-    let stewardess = new Stewardess(0,firstName,lastName,dateOfBirth);
-    this.service.updateStewardess(this.stewardess.id,stewardess).subscribe();
+    let _stewardess = new Stewardess(0,firstName,lastName,dateOfBirth);
+    let _id = this.stewardess.id;
+    this.service.updateStewardess(_id,_stewardess).subscribe();
     this.isUpdate = false
+    
+    this.stewardess = _stewardess;
+    this.stewardess.id = _id;
   }
 
 }

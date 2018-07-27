@@ -1,12 +1,82 @@
-    <div class="offset-md-2 col-md-10">
-      <h2>Aircrafts</h2>
-      <ul>
-        <li *ngFor="let t of Aircrafts">
-          <span>Ticket id : {{t.id}} Price : {{t.typeId}} Numer : {{t.name}} Release : {{t.releseDate}} Timepsan - Years :{{t.lifetime}}</span>
-          <br>
-          <input class="btn btn-submit" type="submit" value="Удалить" (click)="deleteAircraft(t.id)" />
-        </li>
-      </ul>
-      <input type="submit" value="БИЛЕТ" (click)="createAircraft()" />
-      <input type="submit" value="Update" (click)="updateAircraft()" />
+<div class="row justify-content-center">
+    <div > <h1>Aircrafts</h1></div> 
+ </div>
+ <div class="row justify-content-center mb-2">
+    <div ><button type="button"  class="btn btn-warning btn-lg"  data-toggle="modal" data-target="#modalCreate" >Create</button></div>
+ </div> 
+<div class="row justify-content-center ">
+<div class="card m-2 card-width" *ngFor="let a of Aircrafts">
+  <div class="card-header card-header-color text-white ">Aircraft Id : {{a.id}}
+    <a class="btn-info float-right"  [routerLink]="['/aircrafts', a.id]"><i class="fas fa-question"></i></a>
+  </div>
+  <div class="card-body">
+    <div class="card-subtitle mb-2 text-muted">Name : {{a.name}}</div>
+    <div class="card-subtitle mb-2 text-muted">Release date : {{a.releseDate}}</div>
+    <div class="card-subtitle mb-2 text-muted">LifeRelease : {{a.lifetime}} years</div>
+    <div class="card-subtitle mb-2 text-muted"> Type №: {{a.typeId}} 
+    <button type="button" class="btn btn-link text-muted" [routerLink]="['/aircrafttypes', a.typeId]" ><i class="fas fa-info"></i></button>
+    </div>
+    <div class="justify-content-center">
+    <button type="button" class="btn btn-success " [routerLink]="['/aircrafts', a.id]" >Update</button>
+    <button type="button" class="btn btn-danger ml-1" (click)="deleteAircraft(a.id)">Delete</button>
+    </div>
+</div>
+</div>
+<div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Create new object</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Input name </label>
+                <input class="form-control"  [(ngModel)]="name" maxlength="6" pattern="[A-Z]{3}[0-9]{3}" required #nameIn="ngModel"/>
+            </div>
+            <div *ngIf="nameIn.invalid && (nameIn.dirty || nameIn.touched)" class="alert alert-danger">
+               <div>
+                   Length have to be less than 6 and match pattern LLLNNN (L-latter in uppercase,N-number)
+               </div>
+            </div>
+            <div class="form-group">
+                <label>Input release date </label>
+                <input  class="form-control"  [(ngModel)]="release" required maxlength="10" pattern="^([0-2][0-9]|(3)[0-1])(.)(((0)[0-9])|((1)[0-2]))(.)\d{4}$" #relTime="ngModel"/>
+            </div>
+            <div *ngIf="relTime.invalid && (relTime.dirty || relTime.touched)" class="alert alert-danger">
+                <div>
+                    Format dd.mm.yyyy!
+                </div>
+             </div>
+             <div class="form-group">
+                <label>Input lifetime  </label>
+                <input  class="form-control"  [(ngModel)]="lifetime" required maxlength="2" pattern="\b([1-9]|1[0-9]|20)\b" #inputLife="ngModel"/>
+            </div>
+            <div *ngIf="inputLife.invalid && (inputLife.dirty || inputLife.touched)" class="alert alert-danger">
+                <div>
+                    Lifetime have to be between 1 and 20!
+                </div>
+             </div>
+             <div class="form-group">
+                <label>Select type</label>
+                <select class="form-control" (ngModelChange) = "ChangeType($event)"  [(ngModel)]="type" required  #typeAircraft="ngModel" >
+                    <option  *ngFor="let type of Types" [ngValue]="type" >
+                     ID : {{type.id}} Model : {{type.model}}
+                    </option>
+                </select>
+            </div>
+            <div *ngIf="typeAircraft.invalid && (typeAircraft.dirty || typeAircraft.touched)" class="alert alert-danger">
+                <div>
+                    Please,select option!
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" [disabled]="typeAircraft.invalid || inputLife.invalid || relTime.invalid || nameIn.invalid"  class="btn btn-success" data-dismiss="modal" (click)="createAircraft(name,release,lifetime)">Yes</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+        </div>
       </div>
+    </div>
+  </div>

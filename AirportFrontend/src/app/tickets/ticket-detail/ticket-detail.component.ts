@@ -32,8 +32,11 @@ export class TicketDetailComponent implements OnInit {
       this.isUpdate = true
       return;
     }
-    let ticket = new Ticket(0,price,number);
-    this.service.updateTicket(this.ticket.id,ticket).subscribe();
+    let _ticket = new Ticket(0,price,number);
+    let _id = this.ticket.id;
+    this.service.updateTicket(_id,_ticket).subscribe();
+    this.ticket = _ticket;
+    this.ticket.id = _id;
     this.isUpdate = false
   }
 

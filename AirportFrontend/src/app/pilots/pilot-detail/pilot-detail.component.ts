@@ -29,8 +29,11 @@ export class PilotDetailComponent implements OnInit {
       this.isUpdate = true
       return;
     }
-    let pilot = new Pilot(0,firstName,lastName,dateOfBirth,experience);
-    this.service.updatePilot(this.pilot.id,pilot).subscribe();
+    let _id = this.pilot.id;
+    let _pilot = new Pilot(0,firstName,lastName,dateOfBirth,experience);
+    this.service.updatePilot(_id,_pilot).subscribe();
+    this.pilot = _pilot;
+    this.pilot.id = _id;
     this.isUpdate = false;
   }
 }

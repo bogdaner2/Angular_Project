@@ -1,76 +1,71 @@
 <div class="row justify-content-center">
-    <h1>Stewardess Info</h1>
+    <h1>Departure Info</h1>
 </div>
 <div class="card mx-auto card-width">
-    <div class="card-heading p-2"><h4>Stewardess id : {{stewardess?.id}}</h4></div>
+    <div class="card-heading p-2"><h4>Departure id : {{Departure?.id}}</h4></div>
     <hr>
     <div class="card-heading p-2">
-        First Name: <input class="form-control" 
-        value="{{stewardess?.firstName}}" 
+        Number: "{{departure?.number}}" <br>
+        <input class="form-control" 
         [disabled]="!isUpdate"
-        placeholder="{{stewardess?.firstName}}"
-        name="firstName" 
-        [(ngModel)]="firstName" 
-        minlength="4" 
+        placeholder="{{departure?.number}}"
+        [(ngModel)]="number" 
+        minlength="6"
+        maxlength="50" 
         required 
-        #inputFirstN="ngModel"/>
+        #inputNumber="ngModel"/>
     </div>
-    <div *ngIf="inputFirstN.invalid && (inputFirstN.dirty || inputFirstN.touched)" class="alert alert-danger card-heading m-2">
+    <div [hidden]="!isUpdate" *ngIf="inputNumber.invalid && (inputNumber.dirty || inputNumber.untouched)" class="alert alert-danger card-heading m-2">
         <div>
-            Length have to be more than 4!
+            Length have to be more than 6 and less than 50!
         </div>
     </div>
     <div class="card-heading p-2">
-        Last Name: <input class="form-control" 
-        name="lastName" value="{{stewardess?.lastName}}" 
+        Departure time: {{departure?.departureTime}} <br>
+        <input class="form-control" 
         [disabled]="!isUpdate" 
-        placeholder="{{stewardess?.lastName}}" 
-        [(ngModel)]="lastName" 
-        minlength="4" 
+        placeholder="{{departure?.departureTime}}" 
+        [(ngModel)]="time" 
+        maxlength="10"
+        pattern="^([0-2][0-9]|(3)[0-1])(.)(((0)[0-9])|((1)[0-2]))(.)\d{4}$" 
         required 
-        #inputlastN="ngModel"/> 
+        #inputTime="ngModel"/> 
     </div>
-    <div *ngIf="inputlastN.invalid && (inputlastN.dirty || inputlastN.touched)" class="alert alert-danger card-heading m-2">
+    <div [hidden]="!isUpdate" *ngIf="inputTime.invalid && (inputTime.dirty || inputTime.untouched)" class="alert alert-danger card-heading m-2">
         <div>
-            Length have to be more than 4!
+            Format dd.mm.yyyy
         </div>
     </div>
     <div class="card-heading p-2">
-        Date of birth: <input class="form-control" 
-        name="bith" value="{{stewardess?.dateOfBirth}}" 
-        [disabled]="!isUpdate" 
-        placeholder="{{stewardess?.dateOfBirth}}" 
-        [(ngModel)]="birth" 
-        maxlenth="10"
-        pattern="^([0-2][0-9]|(3)[0-1])(.)(((0)[0-9])|((1)[0-2]))(.)\d{4}$"
-        required 
-        #inputBirth="ngModel"/> 
+        Crew №: {{departure?.crewId}} <br> 
+        <select [disabled]="!isUpdate"  class="form-control" (ngModelChange) = "ChangeCrew($event)" name="crew" [(ngModel)]="crew" required  #crewIn="ngModel" >
+                <option  *ngFor="let c of crews" [ngValue]="c" >
+                 Id : {{c.id}} Stewardesses on the board : {{c.stewardessesId.length}}
+                </option>
+            </select>
     </div>
-    <div *ngIf="inputBirth.invalid && (inputBirth.dirty || inputBirth.touched)" class="alert alert-danger card-heading m-2">
-        <div>
-            Date formt dd.mm.yyyy!
+    <div [hidden]="!isUpdate" *ngIf="crewIn.invalid && (crewIn.dirty || crewIn.untouched)" class="alert alert-danger card-heading m-2">
+            <div>
+                Length have to be more than 4!
+            </div>
         </div>
-    </div>
     <div class="card-heading p-2">
-        Date of birth: <input class="form-control" 
-        name="bith" value="{{stewardess?.dateOfBirth}}" 
-        [disabled]="!isUpdate" 
-        placeholder="{{stewardess?.dateOfBirth}}" 
-        [(ngModel)]="birth" 
-        maxlenth="10"
-        pattern="^([0-2][0-9]|(3)[0-1])(.)(((0)[0-9])|((1)[0-2]))(.)\d{4}$"
-        required 
-        #inputBirth="ngModel"/> 
+        Aircraft id: {{departure?.aircraftId}} <br> 
+        <select  [disabled]="!isUpdate" class="form-control" (ngModelChange) = "ChangeAircraft($event)" name="aircraft" [(ngModel)]="aircraft"  required #airIn="ngModel"  >
+                <option  *ngFor="let a of aircrafts" [ngValue]="a" >
+                 Id : {{a.id}} Name : {{a.name}}
+                </option>
+            </select>
     </div>
-    <div *ngIf="inputBirth.invalid && (inputBirth.dirty || inputBirth.touched)" class="alert alert-danger card-heading m-2">
-        <div>
-            Date formt dd.mm.yyyy!
+    <div [hidden]="!isUpdate" *ngIf="airIn.invalid && (airIn.dirty || airIn.untouched)" class="alert alert-danger card-heading m-2">
+            <div>
+                Length have to be more than 4!
+            </div>
         </div>
-    </div>
     <div class="card-heading p-2" [hidden]="!isUpdate">
         Input data to update and press "Update"
     </div>
     <div class="card-heading p-2 mx-auto">
-        <button type="button" class="btn btn-outline-secondary" (click)="updateStewardess(firstName,lastName,birth)">Update</button>
+        <button type="button" [disabled]="inputTime.invalid || inputFirstN" class="btn btn-outline-secondary" (click)="updateDeparture(number,time)">Update</button>
     </div>
 </div>
