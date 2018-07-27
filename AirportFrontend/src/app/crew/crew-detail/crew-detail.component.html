@@ -1,3 +1,47 @@
-<p>
-  crew-detail works!
-</p>
+<div class="row justify-content-center">
+    <h1>Crew Info</h1>
+</div>
+<div class="card mx-auto card-width">
+    <div class="card-heading p-2"><h4>Crew id : {{crew?.id}}</h4></div>
+    <hr>
+    <div class="form-group">
+        <div class="card-heading p-2"> Pilot id : {{crew?.pilotId}}</div>
+        <div class="card-heading p-2">
+        <select class="form-control" [disabled]="!isUpdate" (ngModelChange) = "changePilot($event)"  [(ngModel)]="pilot" required  #pilotIn="ngModel" >
+            <option  *ngFor="let p of pilots" [ngValue]="p" >
+             Id : {{p.id}} Name : {{p.firstName}} Exp : {{p.experience}} year
+            </option>
+        </select>
+      </div>
+    </div>
+    <div class="card-heading p-2"> Stewardesses id :</div>
+    <div class="card-heading p-2" *ngFor="let stew of crew.stewardessesId"> Id : {{stew}}</div>
+    <div class="card-heading p-2">
+    <div class="form-group" [hidden]="!isUpdate" style="display: flex;">
+                
+        <select  class="form-control stew-select" [disabled]="!isUpdate" (ngModelChange) = "changeStewardess($event)" name="stew" [(ngModel)]="stew" required  #stewIn="ngModel" >
+            <option  *ngFor="let s of stewardesses" [ngValue]="s" >
+             Id : {{s.id}} Name : {{s.firstName}} 
+            </option>
+        </select>
+        <button  type="button" class="btn btn-danger stew-btn" (click)="addStewardess()"> Add</button>
+    </div>
+    <div *ngIf="stewIn.invalid && (stewIn.dirty || stewIn.touched)" class="alert alert-danger">
+        <div>
+            Please,select option!
+        </div>
+    </div>
+    <div class="form-group" [hidden]="selectedStewardesses.length == 0">
+      Selected :
+    </div>
+    <div class="form-group" *ngFor="let ss of selectedStewardesses">
+        Id : {{ss}} 
+    </div>
+  </div>
+    <div class="card-heading p-2" [hidden]="!isUpdate">
+        Input data to update and press "Update"
+    </div>
+    <div class="card-heading p-2 mx-auto">
+        <button type="button" [disabled]="pilotIn.invalid || stewIn.invalid" class="btn btn-outline-secondary" (click)="updateCrew()">Update</button>
+    </div>
+</div>

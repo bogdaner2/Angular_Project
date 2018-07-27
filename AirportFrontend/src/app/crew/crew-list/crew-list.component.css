@@ -4,9 +4,22 @@
 }
 
 .btn-crud{
-    position: absolute; bottom: 0;margin-top:20px;margin-bottom: 20px;
+    position: absolute;
+     bottom: 0;
+     margin-top:20px;
+     margin-bottom: 20px;
 }
 
 .info-sign{
  margin-bottom: 10px;
+}
+
+.stew-select{
+    width: 80% ;
+     float:left;
+}
+
+.stew-btn{
+    width: 15% ;
+     margin-left: 5%;
 }

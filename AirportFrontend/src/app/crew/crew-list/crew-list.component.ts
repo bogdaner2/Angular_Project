@@ -5,6 +5,7 @@ import { Stewardess } from '../../stewardesses/stewardess';
 import { Pilot } from '../../pilots/pilot';
 import { PilotService } from '../../pilots/pilot.service';
 import { StewardessService } from '../../stewardesses/stewardess.service';
+import { EventManager } from '../../../../node_modules/@angular/platform-browser';
 
 @Component({
   selector: 'app-crew-list',
@@ -16,8 +17,9 @@ export class CrewListComponent implements OnInit {
   lastId : number;
   Stewardesses : Array<Stewardess>
   Pilots : Array<Pilot>
-  SelectedStewardesses : Array<number>
+  selectedStewardesses : number [] 
   pilotID : number;
+  stewardessID : number;
 
   constructor(public service : CrewService,
     public servicePilot : PilotService,
@@ -25,6 +27,7 @@ export class CrewListComponent implements OnInit {
 
    ngOnInit(){
     this.getCrews();
+   this.selectedStewardesses = [];
   }
 
   getCrews(){
@@ -39,7 +42,7 @@ export class CrewListComponent implements OnInit {
   }
 
   createCrew(){
-    let crew = new Crew(0,this.pilotID,this.SelectedStewardesses)
+    let crew = new Crew(0,this.pilotID,this.selectedStewardesses)
     this.service.createCrew(crew).subscribe();
     this.lastId++;
     crew.id = this.lastId;
@@ -52,11 +55,15 @@ export class CrewListComponent implements OnInit {
   }
 
   addStewardess(){
-
+    this.selectedStewardesses.push(this.stewardessID);
   }
 
   changePilot($event){
+    this.pilotID = $event.id;
+  }
 
+  changeStewardess($event){
+  this.stewardessID = $event.id;
   }
 
 }

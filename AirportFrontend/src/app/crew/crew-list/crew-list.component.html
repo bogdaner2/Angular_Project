@@ -38,25 +38,41 @@
         <div class="modal-body">
             <div class="form-group">
                 <label>Choose a pilot</label>
-                <select class="form-control" (ngModelChange) = "ChangePilot($event)"  [(ngModel)]="pilot" required  #pilotIn="ngModel" >
+                <select class="form-control" (ngModelChange) = "changePilot($event)"  [(ngModel)]="pilot" required  #pilotIn="ngModel" >
                     <option  *ngFor="let p of Pilots" [ngValue]="p" >
                      Id : {{p.id}} Name : {{p.firstName}} Exp : {{p.experience}} year
                     </option>
                 </select>
             </div>
+            <div *ngIf="pilotIn.invalid && (pilotIn.dirty || pilotIn.touched)" class="alert alert-danger">
+                <div>
+                    Please,select option!
+                </div>
+            </div>
             <label>Choose stewardesses</label>
             <div class="form-group" style="display: flex;">
                 
-                <select style="width: 80% ; float:left;" class="form-control" (ngModelChange) = "ChangeCrew($event)" name="crew" [(ngModel)]="crew" required  #crewIn="ngModel" >
+                <select  class="form-control stew-select" (ngModelChange) = "changeStewardess($event)" name="stew" [(ngModel)]="stew" required  #stewIn="ngModel" >
                     <option  *ngFor="let s of Stewardesses" [ngValue]="s" >
                      Id : {{s.id}} Name : {{s.firstName}} 
                     </option>
                 </select>
-                <button  style="width: 15% ; margin-left: 5%;" type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                <button  type="button" class="btn btn-danger stew-btn" (click)="addStewardess()"> Add</button>
+            </div>
+            <div *ngIf="stewIn.invalid && (stewIn.dirty || stewIn.touched)" class="alert alert-danger">
+                <div>
+                    Please,select option!
+                </div>
+            </div>
+            <div class="form-group" [hidden]="selectedStewardesses.length == 0">
+              Selected :
+            </div>
+            <div class="form-group" *ngFor="let ss of selectedStewardesses">
+                Id : {{ss}} 
             </div>
         </div>
         <div class="modal-footer">
-          <button type="button" [disabled]="inputNumber.invalid || inputPrice.invalid"  class="btn btn-success" data-dismiss="modal" (click)="createCrew(number, price)">Yes</button>
+          <button type="button" [disabled]="pilotIn.invalid || stewIn.invalid "  class="btn btn-success" data-dismiss="modal" (click)="createCrew(number, price)">Yes</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
         </div>
       </div>

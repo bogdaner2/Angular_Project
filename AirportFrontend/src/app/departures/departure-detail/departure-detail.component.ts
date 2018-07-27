@@ -6,7 +6,6 @@ import { Crew } from '../../crew/crew';
 import { CrewService } from '../../crew/crew.service';
 import { Aircraft } from '../../aircrafts/aircraft';
 import { AircraftService } from '../../aircrafts/aircraft.service';
-import { VirtualTimeScheduler } from '../../../../node_modules/rxjs';
 
 @Component({
   selector: 'app-departure-detail',
