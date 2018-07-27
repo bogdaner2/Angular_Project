@@ -29,7 +29,7 @@
         </div>
         <div class="modal-body">
             <div class="form-group">
-                <label>Input ticket number <span class="required-sign">*</span></label>
+                <label>Input ticket number </label>
                 <input class="form-control" name="title" [(ngModel)]="number" minlength="4" required #inputNumber="ngModel"/>
             </div>
             <div *ngIf="inputNumber.invalid && (inputNumber.dirty || inputNumber.touched)" class="alert alert-danger">
@@ -38,7 +38,7 @@
                </div>
             </div>
             <div class="form-group">
-                <label>Input price <span class="required-sign">*</span></label>
+                <label>Input price </label>
                 <input  class="form-control" name="price" [(ngModel)]="price" required maxlength="4" pattern="[1-9]{1}[0-9]+" #inputPrice="ngModel"/>
             </div>
             <div *ngIf="inputPrice.invalid && (inputPrice.dirty || inputPrice.touched)" class="alert alert-danger">

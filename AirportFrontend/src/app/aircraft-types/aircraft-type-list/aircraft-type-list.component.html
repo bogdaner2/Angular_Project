@@ -1,12 +1,66 @@
-<div class="offset-md-1 col-md-10">
-  <h2>types</h2>
-  <ul>
-    <li *ngFor="let t of AircraftTypes">
-      <span>Ticket id : {{t.id}} Price : {{t.model}} Numer : {{t.carryingCapasity}}  {{t.countOfSeats}}</span>
-      <br>
-      <input class="btn btn-submit" type="submit" value="Удалить" (click)="deleteAircraftType(t.id)" />
-    </li>
-  </ul>
-  <input type="submit" value="БИЛЕТ" (click)="createAircraftType()" />
-  <input type="submit" value="Update" (click)="updateAircraftType()" />
+<div class="row justify-content-center">
+    <div > <h1>Aircraft types</h1></div> 
+ </div>
+ <div class="row justify-content-center mb-2">
+    <div ><button type="button"  class="btn btn-warning btn-lg"  data-toggle="modal" data-target="#modalCreate" >Create</button></div>
+ </div> 
+<div class="row justify-content-center ">
+<div class="card m-2 card-width" *ngFor="let at of aircraftTypes">
+  <div class="card-header card-header-color text-white ">Aircraft type Id : {{at.id}}
+    <a class="btn-info float-right"  [routerLink]="['/aircrafttypes', at.id]"><i class="fas fa-question"></i></a>
+  </div>
+  <div class="card-body">
+    <div class="card-subtitle mb-2 text-muted">Model : {{at.model}}</div>
+    <div class="card-subtitle mb-2 text-muted">Seats : {{at.countOfSeats}}</div>
+    <div class="card-subtitle mb-2 text-muted">Carrying capacity: {{at.carryingCapacity}}</div>
+    <div class="justify-content-center">
+    <button type="button" class="btn btn-success " [routerLink]="['/aircrafttypes', at.id]" >Update</button>
+    <button type="button" class="btn btn-danger ml-1" (click)="deleteAircraftType(at.id)">Delete</button>
+    </div>
+</div>
+</div>
+<div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Create new object</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Input model <span class="required-sign">*</span></label>
+                <input class="form-control" name="model" [(ngModel)]="model" minlength="4" required #inputModel="ngModel"/>
+            </div>
+            <div *ngIf="inputModel.invalid && (inputModel.dirty || inputModel.touched)" class="alert alert-danger">
+               <div>
+                   Length have to be more than 4!
+               </div>
+            </div>
+            <div class="form-group">
+                <label>Input count of seats </label>
+                <input  class="form-control" name="Seats" [(ngModel)]="seats" required maxlength="3" pattern="[1-9]{1}[0-9]+" #inputSeats="ngModel"/>
+            </div>
+            <div *ngIf="inputSeats.invalid && (inputSeats.dirty || inputSeats.touched)" class="alert alert-danger">
+                <div>
+                    Seats have to be between 10 and 999!
+                </div>
+             </div>
+             <div class="form-group">
+                <label>Input carrying capacity</label>
+                <input  class="form-control" name="Capacity" [(ngModel)]="capacity" required minlength="4" maxlength="6" pattern="[1-9]{1}[0-9]+" #inputCapacity="ngModel"/>
+            </div>
+            <div *ngIf="inputCapacity.invalid && (inputCapacity.dirty || inputCapacity.touched)" class="alert alert-danger">
+                <div>
+                    Capacity have to be between 1000 and 999999 kg!
+                </div>
+             </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" [disabled]="inputCapacity.invalid || inputSeats.invalid || inputModel.invalid"  class="btn btn-success" data-dismiss="modal" (click)="createAircraftType(model,seats,capacity)">Yes</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
   </div>

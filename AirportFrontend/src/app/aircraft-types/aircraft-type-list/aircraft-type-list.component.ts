@@ -9,7 +9,7 @@ import { AircraftTypeService } from '../aircraft-type.service';
 })
 export class AircraftTypeListComponent implements OnInit {
 
-  AircraftTypes : Array<AircraftType>;
+  aircraftTypes : Array<AircraftType>;
   lastId : number;
 
   constructor(public service : AircraftTypeService){ }
@@ -20,31 +20,21 @@ export class AircraftTypeListComponent implements OnInit {
 
   getAllAircraftTypes(){
     this.service.getAllAircraftTypes().subscribe((data : Array<AircraftType>) => {
-    this.AircraftTypes = data;
-    this.lastId = this.AircraftTypes[this.AircraftTypes.length - 1].id;
+    this.aircraftTypes = data;
+    this.lastId = this.aircraftTypes[this.aircraftTypes.length - 1].id;
     })
   }
 
-  createAircraftType(){
-    let aircraftType = new AircraftType(0,"TRD444",10,7000);
+  createAircraftType(model : string,seats: number,capacity : number){
+    let aircraftType = new AircraftType(0,model,seats,capacity);
     this.service.createAircraftType(aircraftType).subscribe();
     this.lastId++;
     aircraftType.id = this.lastId;
-    this.AircraftTypes.push(aircraftType);
+    this.aircraftTypes.push(aircraftType);
   }
 
   deleteAircraftType(id : number){
     this.service.deleteAircraftType(id).subscribe();
-    this.AircraftTypes = this.AircraftTypes.filter(e => { return e.id !== id; });
+    this.aircraftTypes = this.aircraftTypes.filter(e => { return e.id !== id; });
   }
-
-  updateAircraftType() {
-    let aircraftType = new AircraftType(0,"TRD444",100,7000);
-    this.service.updateAircraftType(1,aircraftType).subscribe();
-    let temp = this.AircraftTypes.find(x => x.id == 1)
-    temp.model = aircraftType.model;
-    temp.carryingCapacity = aircraftType.carryingCapacity;
-    temp.countOfSeats = aircraftType.countOfSeats;
-  }
-
 }

@@ -23,7 +23,7 @@ export class AircraftTypeService {
       return this.http.put(this.url + "/" + id, aircraftType);
     }
   
-  deleteAircraftType(id)  {
+    deleteAircraftType(id)  {
       return this.http.delete(this.url + "/"+ id);
     }
   

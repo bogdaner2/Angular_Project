@@ -38,13 +38,4 @@ export class StewardessListComponent implements OnInit {
     this.Stewardesses = this.Stewardesses.filter(e => { return e.id !== id; });
   }
 
-  updateStewardess() {
-    let stewardess = new Stewardess(1,"Luska","Petrova","10.06.2018");
-    this.service.updateStewardess(1,stewardess).subscribe();
-    let temp = this.Stewardesses.find(x => x.id == 1);
-    temp.firstName = stewardess.firstName;
-    temp.lastName = stewardess.lastName;
-    temp.dateOfBirth = stewardess.dateOfBirth;
-  }
-
 }

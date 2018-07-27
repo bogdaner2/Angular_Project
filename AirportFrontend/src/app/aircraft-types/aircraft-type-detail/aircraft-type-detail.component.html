@@ -1,3 +1,66 @@
-<p>
-  aircraft-type-detail works!
-</p>
+<div class="row justify-content-center">
+    <h1>Type Info</h1>
+</div>
+<div class="card mx-auto card-width">
+    <div class="card-heading p-2"><h4>Aircraft type id : {{aircraftType?.id}}</h4></div>
+    <hr>
+    <div class="card-heading p-2">
+        Model: <span class="required-sign">*</span>
+        <input class="form-control" 
+        value="{{aircraftType?.model}}" 
+        [disabled]="!isUpdate"
+        placeholder="{{aircraftType?.model}}"
+        name="model" 
+        [(ngModel)]="model" 
+        minlength="4" 
+        required 
+        #inputModel="ngModel"/>
+    </div>
+    <div *ngIf="inputModel.invalid && (inputModel.dirty || inputModel.touched)" class="alert alert-danger card-heading m-2">
+        <div>
+            Length have to be more than 4!
+        </div>
+    </div>
+    <div class="card-heading p-2">
+        Count of seats: <span class="required-sign">*</span>
+        <input class="form-control" 
+        name="seats" value="{{aircraftType?.countOfSeats}}" 
+        [disabled]="!isUpdate" 
+        placeholder="{{aircraftType?.countOfSeats}}" 
+        [(ngModel)]="seats" 
+        maxlength="3"
+        pattern="[1-9]{1}[0-9]+" 
+        required 
+        #inputSeats="ngModel"/> 
+    </div>
+    <div *ngIf="inputSeats.invalid && (inputSeats.dirty || inputSeats.touched)" class="alert alert-danger card-heading m-2">
+        <div>
+            Seats have to be between 10 and 999!
+        </div>
+    </div>
+    <div class="card-heading p-2">
+        Carrying capacity: <span class="required-sign">*</span>
+        <input class="form-control" 
+        value="{{aircraftType?.carryingCapacity}}" 
+        [disabled]="!isUpdate"
+        placeholder="{{aircraftType?.carryingCapacity}}"
+        name="capacity" 
+        [(ngModel)]="capacity"
+        minlength="4" 
+        maxlength="6" 
+        pattern="[1-9]{1}[0-9]+"
+        required 
+        #inputCapacity="ngModel"/>
+    </div>
+    <div *ngIf="inputCapacity.invalid && (inputCapacity.dirty || inputCapacity.touched)" class="alert alert-danger card-heading m-2">
+        <div>
+            Capacity have to be between 1000 and 999999 kg!
+        </div>
+    </div>
+    <div class="card-heading p-2" [hidden]="!isUpdate">
+        Input data to update and press "Update"
+    </div>
+    <div class="card-heading p-2 mx-auto">
+        <button type="button" class="btn btn-outline-secondary" (click)="updateAircraftType(model,seats,capacity)">Update</button>
+    </div>
+</div>
