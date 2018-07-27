@@ -1,13 +1,113 @@
-<div class="offset-md-2 col-md-10">
-  <h2>Flight</h2>
-  <div class="row">
-  <div class="card" style="width: 18rem;margin-top:20px;" *ngFor="let t of Flights">
-    <div class="card-body">
-      <h5 class="card-title">Point of Depature : {{t.pointOfDeparture}}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">Destination : {{t.destination}}</h6>
-      <input type="submit" class="btn-error btn" value="Delete" (click)="deleteFlight(t.id)" />
-      <p class="card-text"><input type="submit" value="БИЛЕТ" (click)="createFlight()" />
-        <input type="submit" value="Update" (click)="updateFlight()" /></p>
+<div class="row justify-content-center">
+    <div > <h1>Flights</h1></div> 
+ </div>
+ <div class="row justify-content-center mb-2">
+    <div ><button type="button"  class="btn btn-warning btn-lg"  data-toggle="modal" data-target="#modalCreate" >Create</button></div>
+ </div> 
+<div class="row justify-content-center ">
+<div class="card m-2 card-width" *ngFor="let f of Flights">
+  <div class="card-header card-header-color text-white ">Flight Id : {{f.id}}</div>
+  <div class="card-body">
+  <div class="card-subtitle mb-2 text-muted  ">Departure : {{f.pointOfDeparture}}</div>
+  <div class="card-subtitle mb-2 text-muted  ">Departure time : {{f.departureTime}}</div>
+  <div class="card-subtitle mb-2 text-muted  ">Destination : {{f.destination}}</div>
+  <div class="card-subtitle mb-2 text-muted  ">Arrival time : {{f.arrivelTime}}</div>
+  <div class="card-subtitle mb-2 text-muted ">Flight Id : {{f.id}}</div>
+    <hr>
+    <div class="card-subtitle mb-2 ">Tickets : </div>
+    <div class="card-subtitle mb-2 text-muted" *ngIf="f.ticketsId.length === 0" >No tickets</div>
+    <div class="card-subtitle mb-2 text-muted" *ngFor="let t of f.ticketsId" >Tickets id : {{t}}
+        <button type="button" class="btn btn-link text-muted" [routerLink]="['/tickets', t]" ><i class="fas fa-info info-sign"></i></button>
     </div>
-  </div>
+    <div class="space"><span >s</span></div>
+    <div class="btn-crud" >
+    <button type="button" class="btn btn-success " [routerLink]="['/flights', f.id]" >Update</button>
+    <button type="button" class="btn btn-danger ml-1" (click)="deleteFlight(f.id)">Delete</button>
+    </div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Create new object</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Input  number </label>
+                <input class="form-control"  [(ngModel)]="number" minlength="4" required #inputNumber="ngModel"/>
+            </div>
+            <div *ngIf="inputNumber.invalid && (inputNumber.dirty || inputNumber.touched)" class="alert alert-danger">
+               <div>
+                   Length have to be more than 4!
+               </div>
+            </div>
+            <div class="form-group">
+                <label>Input  point of departure </label>
+                <input class="form-control"  [(ngModel)]="dep" minlength="4" required #inputDep="ngModel"/>
+            </div>
+            <div *ngIf="inputDep.invalid && (inputDep.dirty || inputDep.touched)" class="alert alert-danger">
+               <div>
+                   Length have to be more than 4!
+               </div>
+            </div>
+            <div class="form-group">
+                <label>Input departure time </label>
+                <input class="form-control" [(ngModel)]="depTime" maxlenth="10" pattern="^([0-2][0-9]|(3)[0-1])(.)(((0)[0-9])|((1)[0-2]))(.)\d{4}$" required #inputdepTime="ngModel"/>
+            </div>
+            <div *ngIf="inputdepTime.invalid && (inputdepTime.dirty || inputdepTime.touched)" class="alert alert-danger">
+               <div>
+                   Format dd.mm.yyyy
+               </div>
+            </div>
+            <div class="form-group">
+                <label>Input  destination </label>
+                <input class="form-control"  [(ngModel)]="dest" minlength="4" required #inputDest="ngModel"/>
+            </div>
+            <div *ngIf="inputDest.invalid && (inputDest.dirty || inputDest.touched)" class="alert alert-danger">
+               <div>
+                   Length have to be more than 4!
+               </div>
+            </div>
+            <div class="form-group">
+                <label>Input arrival time </label>
+                <input class="form-control" [(ngModel)]="arrTime" maxlenth="10" pattern="^([0-2][0-9]|(3)[0-1])(.)(((0)[0-9])|((1)[0-2]))(.)\d{4}$" required #inputArrTime="ngModel"/>
+            </div>
+            <div *ngIf="inputArrTime.invalid && (inputArrTime.dirty || inputArrTime.touched)" class="alert alert-danger">
+               <div>
+                   Format dd.mm.yyyy
+               </div>
+            </div>
+            <label>Choose tickets</label>
+            <div class="form-group" style="display: flex;">
+                
+                <select  class="form-control tick-select" (ngModelChange) = "changeTicket($event)" name="tick" [(ngModel)]="tick" required  #tickIn="ngModel" >
+                    <option  *ngFor="let t of Tickets" [ngValue]="t" >
+                     Id : {{t.id}} Number : {{t.number}} 
+                    </option>
+                </select>
+                <button  type="button" class="btn btn-danger tick-btn" (click)="addTicket()"> Add</button>
+            </div>
+            <div *ngIf="tickIn.invalid && (tickIn.dirty || tickIn.touched)" class="alert alert-danger">
+                <div>
+                    Please,select option!
+                </div>
+            </div>
+            <div class="form-group" [hidden]="selectedTickets.length == 0">
+              Selected :
+            </div>
+            <div class="form-group" *ngFor="let st of selectedTickets">
+                Id : {{st}} 
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" [disabled]="inputNumber.invalid || inputdepTime.invalid || inputArrTime.invalid || inputDest.invalid || inputDep.invalid || tickIn.invalid "  class="btn btn-success" data-dismiss="modal" (click)="createFlight(number,dep,depTime,dest,arrTime)">Yes</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
   </div>

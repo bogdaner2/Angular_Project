@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Flight } from '../flight';
 import { FlightService } from '../flight.service';
+import { Ticket } from '../../tickets/ticket';
+import { TicketService } from '../../tickets/ticket.service';
 
 @Component({
   selector: 'app-flight-list',
@@ -9,12 +11,16 @@ import { FlightService } from '../flight.service';
 })
 export class FlightListComponent implements OnInit {
   Flights : Array<Flight>;
+  Tickets : Array<Ticket>;
+  selectedTickets : number [];
+  ticketId : number;
   lastId : number;
 
-  constructor(public service : FlightService){ }
+  constructor(public service : FlightService,public serviceTicket : TicketService){ }
 
    ngOnInit(){
     this.getFlights();
+    this.selectedTickets = [];
   }
 
   getFlights(){
@@ -22,10 +28,13 @@ export class FlightListComponent implements OnInit {
     this.Flights = data;
     this.lastId = this.Flights[this.Flights.length - 1].id;
     })
+    this.serviceTicket.getAllTickets().subscribe((data : Array<Ticket>) => {
+      this.Tickets = data;
+      })
   }
 
-  createFlight(){
-    let flight = new Flight(0,"AAA111","Rome","05-06-2017","London","06-06-2017",[1,3,4]);
+  createFlight(number : string, departure : string , deparTime : string , destination : string , arrival:string){
+    let flight = new Flight(0,number,departure,deparTime,destination,arrival,this.selectedTickets);
     this.service.createFlight(flight).subscribe();
     this.lastId++;
     flight.id = this.lastId;
@@ -37,15 +46,13 @@ export class FlightListComponent implements OnInit {
     this.Flights = this.Flights.filter(e => { return e.id !== id; });
   }
 
-  updateFlight() {
-    let flight = new Flight(0,"RRR222","Rome","05-06-2017","London","06-06-2017",[1,3,4]);
-    this.service.updateFlight(1,flight).subscribe();
-    let temp = this.Flights.find(x => x.id == 1)
-    temp.number = flight.number;
-    temp.pointOfDeparture = flight.pointOfDeparture;
-    temp.destination = temp.destination;
-    temp.departureTime = temp.departureTime;
-    temp.arrivelTime = temp.arrivelTime;
+  changeTicket($event){
+    this.ticketId = $event.id;
+    console.log(this.ticketId);
+    }
+
+  addTicket(){
+    this.selectedTickets.push(this.ticketId);
   }
 
 }

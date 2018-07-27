@@ -13,6 +13,11 @@
             </option>
         </select>
       </div>
+      <div *ngIf="pilotIn.invalid && (pilotIn.dirty || pilotIn.untouched)" class="alert alert-danger">
+          <div>
+              Please,select option!
+          </div>
+      </div>
     </div>
     <div class="card-heading p-2"> Stewardesses id :</div>
     <div class="card-heading p-2" *ngFor="let stew of crew.stewardessesId"> Id : {{stew}}</div>
@@ -26,7 +31,7 @@
         </select>
         <button  type="button" class="btn btn-danger stew-btn" (click)="addStewardess()"> Add</button>
     </div>
-    <div *ngIf="stewIn.invalid && (stewIn.dirty || stewIn.touched)" class="alert alert-danger">
+    <div *ngIf="stewIn.invalid && (stewIn.dirty || stewIn.untouched)" class="alert alert-danger">
         <div>
             Please,select option!
         </div>

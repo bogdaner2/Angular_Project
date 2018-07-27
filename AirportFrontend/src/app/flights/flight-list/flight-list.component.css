@@ -1,0 +1,25 @@
+.space{
+    margin-top:20px; 
+    opacity: 0;
+}
+
+.btn-crud{
+    position: absolute;
+     bottom: 0;
+     margin-top:20px;
+     margin-bottom: 20px;
+}
+
+.info-sign{
+ margin-bottom: 10px;
+}
+
+.tick-select{
+    width: 80% ;
+     float:left;
+}
+
+.tick-btn{
+    width: 15% ;
+     margin-left: 5%;
+}
