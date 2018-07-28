@@ -21,7 +21,7 @@ const routes: Routes = [
   {
     path : '',
     pathMatch : 'full',
-    redirectTo : ""},{
+    redirectTo : "tickets"},{
     path : 'tickets',
     component : TicketListComponent
     },{

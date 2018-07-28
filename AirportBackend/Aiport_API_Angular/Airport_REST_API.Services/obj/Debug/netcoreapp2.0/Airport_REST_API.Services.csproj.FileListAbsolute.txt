@@ -1,0 +1,80 @@
+C:\Users\Богдан\Desktop\Airport_WebApi-master\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.Services.deps.json
+C:\Users\Богдан\Desktop\Airport_WebApi-master\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.Services.dll
+C:\Users\Богдан\Desktop\Airport_WebApi-master\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.Services.pdb
+C:\Users\Богдан\Desktop\Airport_WebApi-master\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.DataAccess.dll
+C:\Users\Богдан\Desktop\Airport_WebApi-master\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.Shared.dll
+C:\Users\Богдан\Desktop\Airport_WebApi-master\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Newtonsoft.Json.dll
+C:\Users\Богдан\Desktop\Airport_WebApi-master\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.DataAccess.pdb
+C:\Users\Богдан\Desktop\Airport_WebApi-master\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.Shared.pdb
+C:\Users\Богдан\Desktop\Airport_WebApi-master\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Newtonsoft.Json.xml
+C:\Users\Богдан\Desktop\Airport_WebApi-master\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.csprojResolveAssemblyReference.cache
+C:\Users\Богдан\Desktop\Airport_WebApi-master\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.csproj.CoreCompileInputs.cache
+C:\Users\Богдан\Desktop\Airport_WebApi-master\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.AssemblyInfoInputs.cache
+C:\Users\Богдан\Desktop\Airport_WebApi-master\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.AssemblyInfo.cs
+C:\Users\Богдан\Desktop\Airport_WebApi-master\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.csproj.CopyComplete
+C:\Users\Богдан\Desktop\Airport_WebApi-master\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.dll
+C:\Users\Богдан\Desktop\Airport_WebApi-master\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.pdb
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_EntityFramework\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.Services.deps.json
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_EntityFramework\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.Services.dll
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_EntityFramework\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.Services.pdb
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_EntityFramework\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.DataAccess.dll
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_EntityFramework\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.Shared.dll
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_EntityFramework\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Newtonsoft.Json.dll
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_EntityFramework\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.DataAccess.pdb
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_EntityFramework\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.Shared.pdb
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_EntityFramework\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Newtonsoft.Json.xml
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_EntityFramework\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.csprojResolveAssemblyReference.cache
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_EntityFramework\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.csproj.CoreCompileInputs.cache
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_EntityFramework\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.AssemblyInfoInputs.cache
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_EntityFramework\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.AssemblyInfo.cs
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_EntityFramework\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.csproj.CopyComplete
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_EntityFramework\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.dll
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_EntityFramework\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.pdb
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_CodeTesting\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.Services.deps.json
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_CodeTesting\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.Services.dll
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_CodeTesting\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.Services.pdb
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_CodeTesting\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.DataAccess.dll
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_CodeTesting\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.Shared.dll
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_CodeTesting\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Newtonsoft.Json.dll
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_CodeTesting\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.DataAccess.pdb
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_CodeTesting\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.Shared.pdb
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_CodeTesting\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Newtonsoft.Json.xml
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_CodeTesting\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.csprojResolveAssemblyReference.cache
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_CodeTesting\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.csproj.CoreCompileInputs.cache
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_CodeTesting\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.AssemblyInfoInputs.cache
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_CodeTesting\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.AssemblyInfo.cs
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_CodeTesting\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.csproj.CopyComplete
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_CodeTesting\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.dll
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_CodeTesting\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.pdb
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_Async\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.Services.deps.json
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_Async\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.Services.dll
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_Async\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.Services.pdb
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_Async\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.DataAccess.dll
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_Async\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.Shared.dll
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_Async\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Newtonsoft.Json.dll
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_Async\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.DataAccess.pdb
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_Async\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.Shared.pdb
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_Async\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Newtonsoft.Json.xml
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_Async\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.csprojResolveAssemblyReference.cache
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_Async\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.csproj.CoreCompileInputs.cache
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_Async\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.AssemblyInfoInputs.cache
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_Async\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.AssemblyInfo.cs
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_Async\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.csproj.CopyComplete
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_Async\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.dll
+C:\Users\Богдан\Desktop\Binary Studio Academy\Airport_API_Async\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.pdb
+C:\Users\Богдан\Desktop\Airport\AirportBackend\Aiport_API_Angular\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.Services.deps.json
+C:\Users\Богдан\Desktop\Airport\AirportBackend\Aiport_API_Angular\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.Services.dll
+C:\Users\Богдан\Desktop\Airport\AirportBackend\Aiport_API_Angular\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.Services.pdb
+C:\Users\Богдан\Desktop\Airport\AirportBackend\Aiport_API_Angular\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.DataAccess.dll
+C:\Users\Богдан\Desktop\Airport\AirportBackend\Aiport_API_Angular\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.Shared.dll
+C:\Users\Богдан\Desktop\Airport\AirportBackend\Aiport_API_Angular\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Newtonsoft.Json.dll
+C:\Users\Богдан\Desktop\Airport\AirportBackend\Aiport_API_Angular\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.DataAccess.pdb
+C:\Users\Богдан\Desktop\Airport\AirportBackend\Aiport_API_Angular\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Airport_REST_API.Shared.pdb
+C:\Users\Богдан\Desktop\Airport\AirportBackend\Aiport_API_Angular\Airport_REST_API.Services\bin\Debug\netcoreapp2.0\Newtonsoft.Json.xml
+C:\Users\Богдан\Desktop\Airport\AirportBackend\Aiport_API_Angular\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.csprojResolveAssemblyReference.cache
+C:\Users\Богдан\Desktop\Airport\AirportBackend\Aiport_API_Angular\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.csproj.CoreCompileInputs.cache
+C:\Users\Богдан\Desktop\Airport\AirportBackend\Aiport_API_Angular\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.AssemblyInfoInputs.cache
+C:\Users\Богдан\Desktop\Airport\AirportBackend\Aiport_API_Angular\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.AssemblyInfo.cs
+C:\Users\Богдан\Desktop\Airport\AirportBackend\Aiport_API_Angular\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.csproj.CopyComplete
+C:\Users\Богдан\Desktop\Airport\AirportBackend\Aiport_API_Angular\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.dll
+C:\Users\Богдан\Desktop\Airport\AirportBackend\Aiport_API_Angular\Airport_REST_API.Services\obj\Debug\netcoreapp2.0\Airport_REST_API.Services.pdb

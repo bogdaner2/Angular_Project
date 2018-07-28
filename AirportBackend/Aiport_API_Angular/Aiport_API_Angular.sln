@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aiport_API_Angular", "Aiport_API_Angular\Aiport_API_Angular.csproj", "{745F3699-7794-4DE3-859A-9DF69EC078E5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D30C3E14-4263-47CE-B05C-2941810FB16C} = {D30C3E14-4263-47CE-B05C-2941810FB16C}
+		{A1CEB689-0194-488C-9CAA-66E07B7D48B1} = {A1CEB689-0194-488C-9CAA-66E07B7D48B1}
+		{99ADBDDA-110F-4865-9D62-CFBA31830108} = {99ADBDDA-110F-4865-9D62-CFBA31830108}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Airport_REST_API.DataAccess", "Airport_REST_API.DataAccess\Airport_REST_API.DataAccess.csproj", "{A1CEB689-0194-488C-9CAA-66E07B7D48B1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Airport_REST_API.Services", "Airport_REST_API.Services\Airport_REST_API.Services.csproj", "{D30C3E14-4263-47CE-B05C-2941810FB16C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Airport_REST_API.Shared", "Airport_REST_API.Shared\Airport_REST_API.Shared.csproj", "{99ADBDDA-110F-4865-9D62-CFBA31830108}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{745F3699-7794-4DE3-859A-9DF69EC078E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{745F3699-7794-4DE3-859A-9DF69EC078E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{745F3699-7794-4DE3-859A-9DF69EC078E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{745F3699-7794-4DE3-859A-9DF69EC078E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1CEB689-0194-488C-9CAA-66E07B7D48B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1CEB689-0194-488C-9CAA-66E07B7D48B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1CEB689-0194-488C-9CAA-66E07B7D48B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1CEB689-0194-488C-9CAA-66E07B7D48B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D30C3E14-4263-47CE-B05C-2941810FB16C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D30C3E14-4263-47CE-B05C-2941810FB16C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D30C3E14-4263-47CE-B05C-2941810FB16C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D30C3E14-4263-47CE-B05C-2941810FB16C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99ADBDDA-110F-4865-9D62-CFBA31830108}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99ADBDDA-110F-4865-9D62-CFBA31830108}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99ADBDDA-110F-4865-9D62-CFBA31830108}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99ADBDDA-110F-4865-9D62-CFBA31830108}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CD058206-C75E-42A0-A58A-2D06D366DDB1}
+	EndGlobalSection
+EndGlobal
